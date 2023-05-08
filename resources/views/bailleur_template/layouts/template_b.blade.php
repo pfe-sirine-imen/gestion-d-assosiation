@@ -130,7 +130,16 @@
           </div>
         </div>
       </nav>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+                <script type="text/javascript"> 
+                    var botmanWidget={
+                        introMessage:'Bonjour a assosiation feminine nour !',
+                        aboutText:'ExpertRohila'
+                    };
+                </script>
+        <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
       <!-- End Navbar -->
+
          <!-- commun -->
                 <div class="container  py-5">
                     @yield('main-content')
@@ -141,6 +150,7 @@
      
     </div>
   </div>
+  
   <!--   Core JS Files   -->
   <script src="{{asset('baileur/js/core/jquery.min.js')}}"></script>
   <script src="{{asset('baileur/js/core/popper.min.js')}}"></script>
