@@ -3,7 +3,7 @@
 <div class="card">
     <div class="header">
        <div class="col-md-8">
-      <h4 class="title">Gestion des stocks des dons</h4>
+      <h4 Align=Center>Gestion des stocks des dons</h4>
             @if(session('status'))
                 <div class="alert alert-success">
                     {{session('status')}}
@@ -15,15 +15,18 @@
 
               <div class="col-md-12">
                 <div class="form-group">
-                    <label>Nom du stock</label>
-                    <input type="text" name ="nom" class="form-control" placeholder="Nom du stock" >
-                    @if($errors->any('nom'))
-                    <span class="text-danger"> {{$errors->first('nom')}} </span>
+                    <label  style="color:#FF0000";>*  </label>
+                    <label> le type du don </label>
+                    <input type="text" name ="type" class="form-control" placeholder=" le type du don " >
+                    @if($errors->any('type'))
+                    <span class="text-danger"> {{$errors->first('type')}} </span>
                     @endif
                 </div>
             </div>
+
             <div class="col-md-12">
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>la destination du don</label>
                     <input type="text" name ="destination" class="form-control" placeholder="la destination de dons" >
                     @if($errors->any('destination'))
@@ -33,6 +36,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>La nature du don </label>
                     <input type="text" name ="nature" class="form-control" placeholder="La nature du don " >
                     @if($errors->any('nature'))
@@ -52,17 +56,10 @@
                 </div>
             </div>
             
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label> le type du don </label>
-                    <input type="text" name ="type" class="form-control" placeholder=" le type du don " >
-                    @if($errors->any('type'))
-                    <span class="text-danger"> {{$errors->first('type')}} </span>
-                    @endif
-                </div>
-            </div>
+            
            
             <div class="form-group">
+                <label  style="color:#FF0000";>*  </label>
                 <label> La date du versement</label>
                 <input type="date"  name="date" id="start"  value="aaaa-mm-jj" >
                 @if($errors->any('date'))
@@ -71,6 +68,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label> Le montant du don</label>
                     <input type="number"  name="montant" id="montant"  placeholder="Le montant du don" ><label> DT</label>
                     @if($errors->any('montant'))

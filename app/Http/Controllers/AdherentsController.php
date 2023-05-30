@@ -10,7 +10,8 @@ use App\Models\Projet;
 use App\Models\Evenement;
 use App\Models\Reunion;
 use App\Models\Caisse;
-
+use PDF;
+use App\Http\Controllers\toArray;
 use Illuminate\Http\Request;
 
 class AdherentsController extends Controller
@@ -55,7 +56,7 @@ class AdherentsController extends Controller
             $adherent = Adherents::where('nom','LIKE','%'.$request->search.'%')->paginate(4);
 
         }else{
-            $adherent =  Adherents::paginate(4);
+            $adherent =  Adherents::paginate(3);
         }
         
         return view ('user_template.liste' ,compact('adherent'));
@@ -257,6 +258,7 @@ class AdherentsController extends Controller
         return response()->json(['status' => 'Supprimer adherents succes!'],200);
     }
 
+
     public function ajouter_reunion(Request $request){
         $request->validate([
             'titre' =>'required|string',
@@ -265,7 +267,7 @@ class AdherentsController extends Controller
             'date' =>'required',
             'heure' =>'required',
             'place' =>'required|string',
-            'rendu' =>'required',
+            //'rendu' =>'required',
              
         ]);
        $reunion = new Reunion();
@@ -275,13 +277,7 @@ class AdherentsController extends Controller
        $reunion->date=$request->date;
        $reunion->heure=$request->heure;
        $reunion->place=$request->place;
-       if($request->hasFile('rendu')){
-        $file = $request->file('rendu');
-        $extension = $file->getClientOriginalExtension();
-        $filename= time().'.'.$extension;
-        $file->move('image/',$filename);
-        $reunion->rendu =$filename;   
-        }
+       //$reunion->rendu=$request->rendu;
        $reunion->save();
        return redirect('/reunion')->with('status','Ajouter le reunion avec succes!');
     }
@@ -305,7 +301,7 @@ class AdherentsController extends Controller
             'date' =>'required',
             'heure' =>'required',
             'place' =>'required|string',
-            'rendu' =>'required',
+            //'rendu' =>'required',
              
         ]);
         $reunion =  Reunion::find($request->id);
@@ -315,14 +311,7 @@ class AdherentsController extends Controller
         $reunion->date=$request->date;
         $reunion->heure=$request->heure;
         $reunion->place=$request->place;
-        if($request->hasFile('rendu')){
-            $file = $request->file('rendu');
-            $extension = $file->getClientOriginalExtension();
-            $filename= time().'.'.$extension;
-            $file->move('image/',$filename);
-            $reunion->rendu =$filename;   
-        }
-       
+        //$reunion->rendu=$request->rendu;
         $reunion->update();
         return redirect('/liste_reunion')->with('status','Modifier le reunion avec succes!');
     }
@@ -335,6 +324,20 @@ class AdherentsController extends Controller
     public function reunionpage(){
         return view ('user_template.reunion');
     }
+
+    public function pdf(){
+        $reunion = Reunion::all();
+        view()->share('reunion', $reunion);
+        //$pdf = PDF::loadView('user_template.pdf', compact('reunion'));
+
+        $pdf = PDF::loadView('user_template.pdf',$reunion->toArray())->output();
+        //return $pdf->download($reunion->titre . '_' . $reunion->invite .'.pdf');
+        return response()->streamDownload(
+            fn () => print($pdf),
+            "Compterndurenuion.pdf"
+       );
+    }
+
 
     public function evenementpage(){
         
@@ -620,14 +623,14 @@ class AdherentsController extends Controller
 
     public function ajouter_caisse(Request  $request){
         $request->validate([
-            'cin' => 'required|min:6|max:6',
+            'cin' => 'required|min:8|max:8',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
             'date' => 'required',
             'benefice' => 'required|string',
             'heure' => 'required',
-            'solde' => 'required',
+            //'solde' => 'required',
             'total' => 'required',     
        ]);
        $caisse= new Caisse();
@@ -638,7 +641,7 @@ class AdherentsController extends Controller
        $caisse->date = $request->date;
        $caisse->benefice = $request->benefice;
        $caisse->heure = $request->heure;
-       $caisse->solde = $request->solde;
+       //$caisse->solde = $request->solde;
        $caisse->total = $request->total;
        $caisse->save();
        return redirect('/caisse')->with('status','ajouter les operation des caisses  avec   succes!');
@@ -647,14 +650,14 @@ class AdherentsController extends Controller
 
     public function save2(Request  $request){
         $request->validate([
-            'cin' => 'required|min:6|max:6',
+            'cin' => 'required|min:8|max:8',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
             'date' => 'required',
             'benefice' => 'required|string',
             'heure' => 'required',
-            'solde' => 'required',
+            //'solde' => 'required',
             'total' => 'required',     
        ]);
        $caisse= new Caisse();
@@ -665,7 +668,7 @@ class AdherentsController extends Controller
        $caisse->date = $request->date;
        $caisse->benefice = $request->benefice;
        $caisse->heure = $request->heure;
-       $caisse->solde = $request->solde;
+       //$caisse->solde = $request->solde;
        $caisse->total = $request->total;
        $caisse->save();
        return response()->json(['status' => 'ajouter caisse succes!'],200);
@@ -695,14 +698,14 @@ class AdherentsController extends Controller
     
     public function  update_caisse_tart(Request $request){
         $request->validate([
-            'cin' => 'required|min:6|max:6|integer',
+            'cin' => 'required|min:8|max:8|integer',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
             'date' => 'required',
             'benefice' => 'required|string',
             'heure' => 'required',
-            'solde' => 'required',
+            //'solde' => 'required',
             'total' => 'required',     
        ]);
        $caisse= Caisse::find($request->id);
@@ -713,7 +716,7 @@ class AdherentsController extends Controller
        $caisse->date = $request->date;
        $caisse->benefice = $request->benefice;
        $caisse->heure = $request->heure;
-       $caisse->solde = $request->solde;
+       //$caisse->solde = $request->solde;
        $caisse->total = $request->total;
        $caisse->update();
        return redirect('/liste_caisse')->with('status','Modifier les operation des caisses  avec   succes!');
@@ -734,7 +737,7 @@ class AdherentsController extends Controller
             'date' => 'required',
             'benefice' => 'required|string',
             'heure' => 'required',
-            'solde' => 'required',
+            //'solde' => 'required',
             'total' => 'required',     
        ]);
        $caisse= Caisse::find($request->id);
@@ -745,7 +748,7 @@ class AdherentsController extends Controller
        $caisse->date = $request->date;
        $caisse->benefice = $request->benefice;
        $caisse->heure = $request->heure;
-       $caisse->solde = $request->solde;
+       //$caisse->solde = $request->solde;
        $caisse->total = $request->total;
        $caisse->update();
        return response()->json(['status' => 'status','Modifier les operation des caisses  avec succes!'],200);
@@ -780,7 +783,7 @@ class AdherentsController extends Controller
              'lieu' => 'required|string',
              'budget' => 'required',
              'objectif'=> 'required',
-             'facture' => 'required',
+             //'facture' => 'required',
         ]);
         
          $even= new Evenement();
@@ -791,13 +794,7 @@ class AdherentsController extends Controller
          $even->lieu = $request->lieu;
          $even->budget = $request->budget;
          $even->objectif = $request->objectif;
-         if($request->hasFile('facture')){
-            $file = $request->file('facture');
-            $extension = $file->getClientOriginalExtension();
-            $filename= time().'.'.$extension;
-            $file->move('image/',$filename);
-            $even->facture =$filename;   
-         }
+        
          $even->save();
          
          return redirect('/evenement_bailleur')->with('status','ajouter les evenement avec   succes!');
@@ -829,7 +826,7 @@ class AdherentsController extends Controller
             'lieu' => 'required|string',
             'budget' => 'required',
             'objectif' => 'required',
-            'facture' => 'required',
+            //'facture' => 'required',
     ]);
         $evens=  Evenement::find($request->id);
         $evens->titre = $request->titre;
@@ -839,13 +836,7 @@ class AdherentsController extends Controller
         $evens->lieu = $request->lieu;
         $evens->budget = $request->budget;
         $evens->objectif = $request->objectif;
-        if($request->hasFile('facture')){
-            $file = $request->file('facture');
-            $extension = $file->getClientOriginalExtension();
-            $filename= time().'.'.$extension;
-            $file->move('image/',$filename);
-            $evens->facture =$filename;   
-        }
+        
         $evens->update();
        
         return redirect('/liste_evenement_bailleur')->with('status','Modifier  les evenement avec   succes!');
@@ -855,6 +846,17 @@ class AdherentsController extends Controller
         $evens = Evenement::find($id);
         $evens->delete();
         return redirect('/liste_evenement_bailleur')->with('status','Supprimer un evenement avec succes!');
+    }
+
+    public function pdf_b(){
+        $even = Evenement::all();
+        view()->share('evens', $even);
+        
+        $pdf = PDF::loadView('user_template.pdf_b',$even->toArray())->output();
+        return response()->streamDownload(
+            fn () => print($pdf),
+            "Compterndurenuion.pdf"
+       );
     }
 
 }

@@ -9,9 +9,11 @@
 </head>
 <body>
 	<div class="login-wrap">
+		
 	<div class="login-html">
+		
 		<div>
-			<h1 style="text-align: center;color: #fff;margin-bottom: 60px;font-family: 'nunito';font-weight: normal;">Se connecter</h1>
+		<h1 style="text-align: center;color: #fff;margin-bottom: 60px;font-family: 'nunito';font-weight: normal;">Se connecter</h1>
 		</div>
 		
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Se connecter</label>

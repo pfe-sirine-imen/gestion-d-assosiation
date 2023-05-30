@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Gestion de projet</h4>
+                    <h4 Align=Center>Gestion de projet</h4>
                             @if(session('status'))
                             <div class="alert alert-success">
                                 {{session('status')}}
@@ -20,6 +20,7 @@
                 
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>Nom du projet</label>
                             <input type="text" class="form-control" name="nom" placeholder="Nom du projet" >
                         </div>
@@ -30,6 +31,7 @@
                     
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>L'objectif du projet</label>
                             <input type="text" class="form-control" name="objectif" placeholder="L'objectif du projet" >
                         </div>
@@ -41,6 +43,7 @@
                     
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>la responsable du projet</label>
                             <input type="text" class="form-control" name="responsable" placeholder="Responsable du projet" >
                         </div>
@@ -51,6 +54,7 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>la  Date debut  du projet</label>
                             <input type="date"  name="date_debut" id="start"  value="aaaa-mm-jj" >
                          </div>
@@ -61,6 +65,7 @@
                     
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>la Date fin du projet</label>
                             <input type="date"  name="date_fin" id="start"  value="aaaa-mm-jj" >
                          </div>
@@ -71,6 +76,7 @@
                 </div>
                 <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>le montant de la dépense</label>
                             <input type="number" class="form-control" name="montant" placeholder="le montant de la dépense" >
                         </div>
@@ -80,6 +86,7 @@
                 </div>
                 <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>l'état d'avancement du projet(%)</label>
                             <input type="number" class="form-control" name="etat" placeholder="l'état d'avancement du projet" >
                         </div>

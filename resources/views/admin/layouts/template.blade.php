@@ -46,7 +46,7 @@
 
   <hr class="horizontal light mt-0 mb-2">
 
-  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+
     <ul class="navbar-nav"> 
  
     <li class="nav-item">
@@ -72,27 +72,66 @@
         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
           <i class="material-icons opacity-10">dashboard</i>
         </div>
-          <span class="nav-link-text ms-1">compte des bailleurs des fonds</span>
+          <span class="nav-link-text ms-1">compte de bailleur de fond</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white " href="/listeA">
+        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="material-icons opacity-10">dashboard</i>
+        </div>
+          <span class="nav-link-text ms-1">Gestion d'adhérent</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-white " href="/listeR">
+        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="material-icons opacity-10">dashboard</i>
+        </div>
+          <span class="nav-link-text ms-1">Gestion de réunion</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-white " href="/listeE">
+        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="material-icons opacity-10">dashboard</i>
+        </div>
+          <span class="nav-link-text ms-1">Gestion d'evénement</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-white " href="/listeC">
+        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="material-icons opacity-10">dashboard</i>
+        </div>
+          <span class="nav-link-text ms-1">Gestion de caisse</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-white " href="/listeD">
+        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="material-icons opacity-10">dashboard</i>
+        </div>
+          <span class="nav-link-text ms-1">Gestion de don</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-white " href="/listeP">
+        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="material-icons opacity-10">dashboard</i>
+        </div>
+          <span class="nav-link-text ms-1">Gestion de projet</span>
       </a>
     </li>
 
 
-
-  
-
-
-  
-
-  
-<li class="nav-item">
-  <a class="nav-link text-white " href="./profile.html">
-      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-        <i class="material-icons opacity-10">person</i>
-      </div> <span class="nav-link-text ms-1">Profile</span>
-  </a>
-</li>
 </ul>
- </div>
+ 
   
  
     
@@ -123,7 +162,9 @@
         
       </ul>
     </div>
+    
   </div>
+  
 </nav>
 
 <!-- End Navbar -->

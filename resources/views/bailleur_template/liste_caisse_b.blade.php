@@ -7,11 +7,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Listes des Operations des caisses</h4>
+                    <h4 Align=Center>Listes des Operations des caisses</h4>
                     <div class="row g-3 align-items-center mt-2">
                     <div class="col-auto">
                     <form action="/consulter_caisse" method="GET">
-                        <input type="search" id="inputPassword6"  name="search" placeholder="Rechercher un nom..."  class="form-control" aria-labelledby="passwordHelpInline">
+                        <input type="text"  placeholder="Rechercher un cin..."  name="search" >
+                        <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                     </div>
                     </div>

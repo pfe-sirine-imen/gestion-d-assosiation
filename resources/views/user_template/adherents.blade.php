@@ -6,7 +6,7 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">formulaire d'inscription des adhérents</h4>
+                                <h4 Align=Center>formulaire d'inscription des adhérents</h4>
                           
                             @if(session('status'))
                                 <div class="alert alert-success">
@@ -25,8 +25,9 @@
                                 <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Nom </label>
-                                                <input type="text" name ="nom" class="form-control" placeholder="Nom"  >
+                                                <label  style="color:#FF0000";>*  </label>
+                                                <label > Nom </label>
+                                                <input type="text" name ="nom"   class="form-control" placeholder="Nom"  >
                                             </div>
                                             @if($errors->any('nom'))
                                             <span class="text-danger"> {{$errors->first('nom')}} </span>
@@ -34,6 +35,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Prenom</label>
                                                 <input type="text" name ="prenom" class="form-control" placeholder="Prenom" >
                                             </div>
@@ -44,6 +46,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Adresse E-mail</label>
                                                 <input type="text" name ="mail" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  placeholder="Adresse E-mail" >
                                             </div>
@@ -53,6 +56,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Mot de passe</label>
                                                 <input type="password" name ="pwd" class="form-control" pattern=".{6,}" placeholder="Mot de passe" >
                                             </div>
@@ -62,6 +66,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>situation</label>
                                                 <div>
                                                         <input type="radio" id="marié" name="situation" value="marié">
@@ -90,6 +95,7 @@
    
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Date de naissance</label>
                                                 <input type="date"  name="age" id="start"  value="aaaa-mm-jj" >
                                             </div>
@@ -99,17 +105,33 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>niveau d'étude</label>
-                                                <input type="text" class="form-control" name="niveau" placeholder="niveau d'étude" >
-                                            @if($errors->any('niveau'))
-                                            <span class="text-danger"> {{$errors->first('niveau')}} </span>
-                                            @endif
+                                                <label  style="color:#FF0000";>*  </label>
+                                                <label class="form-select form-select-lg">niveau d'étude</label>
+                                                <select class="form-select form-select-lg"  name="niveau">
+                                                    <option>niveau d'étude</option>
+                                                    <option>- autre...</option>
+                                                    <option>7éme</option>
+                                                    <option>8éme</option>
+                                                    <option>9éme</option>
+                                                    <option>1ére secondaire</option>
+                                                    <option>2éme secondaire</option>
+                                                    <option>3éme secondaire</option>
+                                                    <option>baccalauréat</option>
+                                                    <option>1ére faculte</option>
+                                                    <option>2éme faculte</option>
+                                                    <option>3éme faculte</option>
+                                                    <option>+ autre...</option>
+                                                </select>                                           
+                                                 @if($errors->any('niveau'))
+                                                    <span class="text-danger"> {{$errors->first('niveau')}} </span>
+                                                @endif
                                             </div>
                                         </div>
                                         
                                     <div class="row">
                                     
                                     <div class="col-md-12">
+                                        <label  style="color:#FF0000";>*  </label>
                                          <label  class="form-select form-select-lg">pays</label>
                                             <select class="form-select form-select-lg"  name ="pays">
                                                 <option>Tunisie</option>
@@ -129,6 +151,7 @@
                                     </div>
                                     <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Ville</label>
                                                 <input type="text"  name ="capital" class="form-control" placeholder="Ville" >
                                             </div>
@@ -140,6 +163,7 @@
                                         
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Code Postal</label>
                                                 <input type="text"  name ="code" class="form-control" placeholder="Code postal" >
                                             </div>
@@ -150,6 +174,7 @@
                                     </div>
                                     <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Numero de téléphone</label>
                                                 
                                                 <input type="text" name ="tel"  class="form-control" placeholder="Numero de téléphone" >
@@ -160,6 +185,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Photos </label>
                                                 <input type="file" name="photo"
                                                     id="avatar" name="avatar"
@@ -171,6 +197,7 @@
                                          </div>
                                          <div class="col-md-6">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label> Une copie de la carte nationale d'identité</label>
                                                 <input type="file" name="copie"
                                                     id="avatar" name="avatar"
@@ -180,10 +207,11 @@
                                             <span class="text-danger"> {{$errors->first('copie')}} </span>
                                             @endif
                                          </div>
-
-                                    <button type="submit" style="background-color:#A569BD ; border-color:#A569BD ; color:white" class="btn btn-info btn-fill pull-right">Ajouter Adherents</button><br></br>
-                                    <a href="/liste/adherents" style="background-color:#A569BD ; border-color:#A569BD ; color:white" class="btn btn-info btn-fill pull-right" >Revenir a  liste des  Adherents</a>
+                                <div class="centre">
+                                    <button type="submit" style="background-color:#A569BD ; border-color:#A569BD ; color:white" class="btn btn-info btn-fill pull-right">Ajouter Adherents</button>
                                     
+                                    <a href="/liste/adherents" style="background-color:#A569BD ; border-color:#A569BD ; color:white" class="btn btn-info btn-fill pull-right" >Revenir a  liste des  Adherents</a>
+                                </div>
                                     
                                 </form>
                             </div>

@@ -29,7 +29,7 @@
     
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
+            <a href="{{route ('ass')}}" class="simple-text">
                 Assosiation Nour
             </a>
         </div>
@@ -63,7 +63,7 @@
                 <ul class="menu-sub"> 
                     <li class="nav-link">
                         <a class="nc-icon nc-notes"  style="color:white" href="{{route ('liste_evenement')}}">
-                        <p> D'assosiation </p>
+                        <p> Assosiation </p>
                         </a>  
                     </li>
                     <li class="nav-link">
@@ -106,56 +106,21 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg " color-on-scroll="500">
     <div class="container-fluid">
-    <a class="navbar-brand" href="{{route ('ass')}}" style="color:#A569BD ">Assosiation Nour</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-        <li class="nav-item">
-          <a class="nav-link"  style="color:#A569BD " href="{{route ('adherents')}}">adherents</a>
-        </li>
-
-
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  style="color:#A569BD " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Evenemnts
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{route ('evenement')}}">Liste d'evenement d'assostaion </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{{route ('evenement_bailleur')}}">Liste d'evenement (Bailleur de fond)</a>
-        </div>
-      </li>
-       
-        <li class="nav-item">
-          <a class="nav-link"  style="color:#A569BD " href="{{route ('reunion')}}">Reunion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color:#A569BD "  href="{{route ('dons')}}">Don</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color:#A569BD " href="{{route ('caisse')}}">Caisse</a>
-        </li>
-        <li class="nav-item" >
-          <a class="nav-link" style="color:#A569BD "  href="{{route ('projet')}}" >Projet</a>
-        </li>
-      </ul>
-      
-        <input class="form-control me-2" type="search" placeholder="recherche" aria-label="Search">
-      
-     
+    <div style="width:10%;  float:left;  margin-right:20px"> 
+        <img src="{{asset('dashboard/assets/img/im1.jpeg')}}" width="60%" alt="">  
     </div>
-  
-                
+   
+      
+        
+     
+    
    <li class="nav-item d-flex align-items-center"  >
     <a href="{{route('admin.logout')}}" style="color:#A569BD " class="glyphicon glyphicon-log-ou">
         <i class="fa fa-user me-sm-1" style="color:#A569BD "></i>
         <span class="d-sm-inline d-none" style="color:#A569BD ">Deconnexion</span>
     </a>
     </li>
-
+</div>
 </nav>
 
 
@@ -184,7 +149,34 @@
 
 
     <!-- End Navbar -->
-   
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav>
+                <ul class="footer-menu">
+                    <li>
+                        <a href="https://www.facebook.com/associ.nour">
+                            Page Facebook 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="serienangel@yahoo.fr">
+                            Mail
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-center">
+                    ©
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script>
+                    <a href="https://www.facebook.com/associ.nour">Assosiation Nour</a>, جمعية نسائية تهدف الى:
+
+                    * المحافظة على مكتسبات المراة
+                </p>
+            </nav>
+        </div>
+      </footer> 
 </div>
 
 </div>
@@ -208,6 +200,6 @@
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('home/js/demo.js')}} "></script>
 
-</script>
+
 
  </html>

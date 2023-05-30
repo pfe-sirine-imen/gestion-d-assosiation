@@ -27,10 +27,10 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="{{route('bailleur')}}" class="simple-text logo-mini">
           BF
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="{{route('bailleur')}}" class="simple-text logo-normal">
           Bailleur des fonds
         </a>
       </div>
@@ -45,11 +45,17 @@
             </a>
           </li>
 
-
+          <li>
+            <a href="{{route('projet_b')}}">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Liste des projets</p>
+            </a>
+          </li>
+          
           <li>
             <a href="{{route('evenement_b')}}">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Liste des evenements</p>
+              <p>Liste des activites</p>
             </a>
           </li>
 
@@ -60,12 +66,7 @@
             </a>
           </li>
          
-          <li>
-            <a href="{{route('projet_b')}}">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Liste des projets</p>
-            </a>
-          </li>
+          
 
           <li>
             <a href="{{route('dons_b')}}">
@@ -130,10 +131,13 @@
           </div>
         </div>
       </nav>
+
+
+      
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
                 <script type="text/javascript"> 
                     var botmanWidget={
-                        introMessage:'Bonjour a assosiation feminine nour !',
+                        introMessage:'Bonjour lassosiation !',
                         aboutText:'ExpertRohila'
                     };
                 </script>

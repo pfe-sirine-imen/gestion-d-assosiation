@@ -47,7 +47,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     
 });
-/*Route::get('listeadhernets', [AdherentsController::class, 'index1']);
+Route::get('listeadhernets', [AdherentsController::class, 'index1']);
 Route::post('ajouteradh', [AdherentsController::class, 'save1']);
 Route::get('supadh/{id}', [AdherentsController::class, 'destory1']);
 Route::post('update/{id}', [AdherentsController::class, 'update_trat1']);
@@ -60,6 +60,5 @@ Route::post('updatecaisse/{id}', [AdherentsController::class, 'update_tart2']);
 Route::get('listedons', [AdherentsController::class, 'index3']);
 Route::post('ajouterdon', [AdherentsController::class, 'save3']);
 Route::get('supdon/{id}', [AdherentsController::class, 'destory3']);
-Route::post('updatedon/{id}', [AdherentsController::class, 'update_trat3']);*/
+Route::post('updatedon/{id}', [AdherentsController::class, 'update_trat3']);
 
-Route::get('listedons', [AdherentsController::class, 'index3']);

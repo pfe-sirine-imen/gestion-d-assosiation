@@ -7,11 +7,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Listes des projets</h4>
+                    <h4 Align=Center>Listes des projets</h4>
                     <div class="row g-3 align-items-center mt-2">
                     <div class="col-auto">
                     <form action="/consulter_projet" method="GET">
-                        <input type="search" id="inputPassword6"  name="search" placeholder="Rechercher un nom..."  class="form-control" aria-labelledby="passwordHelpInline">
+                        <input type="text"  placeholder="Rechercher un nom..."  name="search" >
+                        <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                     </div>
                     </div>
@@ -27,7 +28,7 @@
                             <th>ID</th>
                             <th>Nom du projet</th>
                             <th>L'objectif du projet</th>
-                            <th>la responsable du projet</th>
+                            <th>Chef du projet</th>
                             <th>la  Date debut  du projet</th>
                             <th>la Date fin du projet </th>
                             <th>le montant de la dépense</th>

@@ -4,9 +4,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdherentsController;
 use App\Http\Controllers\BailleurController;
-use App\Http\Controllers\Admin\compte_userController;
+
 use App\Http\Controllers\BotmanController;
 use App\Http\Controllers\Admin\compte_bailleurController;
+use App\Http\Controllers\Admin\compte_userController;
+use App\Http\Controllers\Mail\WelcomeUserMail;
+
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +24,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 Route::get('/botman',[BotmanController::class,'handle']);
 Route::post('/botman',[BotmanController::class,'handle']);
@@ -37,12 +40,14 @@ Route::controller(BailleurController::class)->group(function(){
     Route::get('/consulter_projet','consulterprojet' )->name('projet_b');
 });
 });
+//Route::middleware(['auth','role:user'])->group(function(){
 Route::group(['middleware' => 'auth'], function () {
 Route::controller(HomeController::class)->group(function(){
     Route::get('/','Index' )->name('Home');
     Route::get('/assosiation','ass' )->name('ass');
    
 });
+
 
 Route::controller(AdherentsController::class)->group(function(){
     Route::get('/profil','profilpage' )->name('profil');
@@ -57,6 +62,8 @@ Route::controller(AdherentsController::class)->group(function(){
     Route::get('/sup_adherents/{id}','sup_adherents' )->name('sup_adherents');
 
     Route::get('/reunion','reunionpage' )->name('reunion');
+    Route::get('/pdf','pdf' )->name('pdf');
+
     Route::post('/ajouter/reunion','ajouter_reunion' )->name('ajouter_reunion');
     Route::get('/liste_reunion','liste_reunion' )->name('liste_reunion');
     Route::get('/update_reunion/{id}','update_reunion' )->name('update_reunion');
@@ -73,6 +80,8 @@ Route::controller(AdherentsController::class)->group(function(){
 
 
     Route::get('/evenement_bailleur','evenement_bailleur' )->name('evenement_bailleur');
+    Route::get('/pdf_b','pdf_b' )->name('pdf_b');
+    
     Route::post('/ajouter_eve_bailleur','ajouter_eve_bailleur' )->name('ajouter_eve_bailleur');
     Route::get('/liste_evenement_bailleur','liste_evenement_bailleur' )->name('liste_evenement_bailleur');
     Route::get('/update_eve_bailleur/{id}','update_eve_bailleur' )->name('update_eve_bailleur');
@@ -105,25 +114,90 @@ Route::controller(AdherentsController::class)->group(function(){
 
  
   });
-
 });
+
 Route::controller(DashboardController::class)->group(function(){
     Route::get('/admin/dashboard','Index')->name('admindashboard');
-      
+    Route::get('/ajouteruser','ajouteruser')->name('ajouteruser');
 });
+
 
 Route::controller(Compte_userController::class)->group(function(){
     Route::get('/admin/compte_user','compte_user')->name('compte_user');
-    Route::get('/ajouter/tratm','ajouter_tratm')->name('ajouter_tratm');
+    //Route::post('/ajouteruser','ajouteruser')->name('ajouteruser');
+    Route::post('/ajoutuser/trat','ajouter_user_trat' )->name('ajouter_user_trat');
+
+
       
 });
 
 Route::controller(Compte_bailleurController::class)->group(function(){
     Route::get('/admin/compte_bailleur','compte_bailleur')->name('compte_bailleur');
+    Route::get('/compte_bailleur','compte_bailleur')->name('compte_bailleu');
+
+    Route::get('/ajouterbail','ajouterbail')->name('ajouterbail');
       
 });
+
+
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/logout','destroy')->name('admin.logout');
+    Route::post('/ajouteruser','ajouteruser')->name('ajouteruser');
+    
+
+
+
+    Route::get('/listeA','listeA')->name('liste_A');
+    Route::post('/A','A' )->name('A');
+    Route::get('/update_A/{id}','update_A' )->name('update_A');
+    Route::post('/update_A/trat','update_A_trat' )->name('update_A/trat');
+    Route::get('/sup_A/{id}','sup_A' )->name('sup_A');
+
+
+    Route::get('/listeD','listeD')->name('liste_D');
+    Route::post('/D','D' )->name('D');
+    Route::get('/update_D/{id}','update_D' )->name('update_D');
+    Route::post('/update_D/trat','update_D_trat' )->name('update_D/trat');
+    Route::get('/sup_D/{id}','sup_D' )->name('sup_D');
+
+
+
+    Route::get('/listeC','listeC')->name('liste_C');
+    Route::post('/C','C' )->name('C');
+    Route::get('/update_C/{id}','update_C' )->name('update_C');
+    Route::post('/update_C/trat','update_C_trat' )->name('update_C/trat');
+    Route::get('/sup_C/{id}','sup_C' )->name('sup_C');
+
+
+
+
+    Route::get('/listeE','listeE')->name('liste_E');
+    Route::post('/E','E' )->name('E');
+    Route::get('/update_E/{id}','update_E' )->name('update_E');
+    Route::post('/update_E/trat','update_E_trat' )->name('update_E/trat');
+    Route::get('/sup_E/{id}','sup_E' )->name('sup_E');
+
+
+
+
+
+    Route::get('/listeR','listeR')->name('liste_R');
+    Route::post('/R','R' )->name('R');
+    Route::get('/update_R/{id}','update_R' )->name('update_R');
+    Route::post('/update_R/trat','update_R_trat' )->name('update_R/trat');
+    Route::get('/sup_R/{id}','sup_R' )->name('sup_R');
+
+
+
+
+
+
+    Route::get('/listeP','listeP')->name('liste_P');
+    Route::post('/P','P' )->name('P');
+    Route::get('/update_P/{id}','update_P' )->name('update_P');
+    Route::post('/update_P/trat','update_P_trat' )->name('update_P/trat');
+    Route::get('/sup_P/{id}','sup_P' )->name('sup_P');
+
       
 });
 

@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="header">
-                    <h4 class="title"> Modifier du projet</h4>
+                    <h4 Align=Center> Modifier du projet</h4>
                             @if(session('status'))
                             <div class="alert alert-success">
                                 {{session('status')}}
@@ -20,6 +20,7 @@
                         <input type="text" name="id" style="display:none;" value="{{ $projets->id }}">
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>Nom du projet</label>
                             <input type="text" class="form-control" name="nom" value="{{ $projets->nom }}" placeholder="Nom du projet" >
                         </div>
@@ -29,6 +30,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>L'objectif du projet</label>
                             <input type="text" class="form-control" name="objectif"  value="{{ $projets->objectif }}" placeholder="L'objectif du projet" >
                         </div>
@@ -40,6 +42,7 @@
                     
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>la responsable du projet</label>
                             <input type="text" class="form-control" name="responsable" value="{{ $projets->responsable }}" placeholder="Responsable du projet" >
                         </div>
@@ -50,6 +53,7 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>la  Date debut  du projet</label>
                             <input type="date"  name="date_debut" value="{{ $projets->date_debut }}" id="start"  value="aaaa-mm-jj" >
                          </div>
@@ -60,6 +64,7 @@
                     
                     <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>la Date fin du projet</label>
                             <input type="date"  name="date_fin" id="start" value="{{ $projets->date_fin }}" value="aaaa-mm-jj" >
                          </div>
@@ -70,6 +75,7 @@
                 </div>
                 <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>le montant de la dépense</label>
                             <input type="number" class="form-control" name="montant" value="{{ $projets->montant }}" placeholder="le montant de la dépense" >
                         </div>
@@ -79,6 +85,7 @@
                 </div>
                 <div class="col-md-12">
                         <div class="form-group">
+                            <label  style="color:#FF0000";>*  </label>
                             <label>l'état d'avancement du projet(%)</label>
                             <input type="number" class="form-control" name="etat" value="{{ $projets->etat }}" placeholder="l'état d'avancement du projet" >
                         </div>

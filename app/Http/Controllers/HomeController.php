@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    
     public function Index(){
 
         return view('user_template.layouts.sous_template');

@@ -3,7 +3,7 @@
 <div class="card">
     <div class="header">
        <div class="col-md-8">
-      <h4 class="title"> Modifier les stocks des dons</h4>
+      <h4 Align=Center> Modifier les stocks des dons</h4>
             @if(session('status'))
                 <div class="alert alert-success">
                     {{session('status')}}
@@ -13,17 +13,19 @@
         <form action="/update_don/trat" method="POST" enctype="multipart/form-data">
               @csrf
                 <input type="text" name="id" style="display:none;" value="{{ $dons->id }}">
-              <div class="col-md-12">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <label>Nom du stock</label>
-                    <input type="text" name ="nom" value="{{ $dons->nom }}" class="form-control" placeholder="Nom du stock" >
+                    <label  style="color:#FF0000";>*  </label>
+                    <label> le type du don </label>
+                    <input type="text" name ="type" value="{{ $dons->type }}" class="form-control" placeholder=" le type du don " >
                 </div>
-                @if($errors->any('nom'))
-                <span class="text-danger"> {{$errors->first('nom')}} </span>
+                @if($errors->any('type'))
+                <span class="text-danger"> {{$errors->first('type')}} </span>
                 @endif
             </div>
             <div class="col-md-12">
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>la destination du don</label>
                     <input type="text" name ="destination" value="{{ $dons->destination }}" class="form-control" placeholder="la destination de dons" >
                 </div>
@@ -33,6 +35,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>La nature du don </label>
                     <input type="text" name ="nature" value="{{ $dons->nature }}" class="form-control" placeholder="La nature du don " >
                 </div>
@@ -51,17 +54,10 @@
                 @endif
             </div>
             
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label> le type du don </label>
-                    <input type="text" name ="type" value="{{ $dons->type }}" class="form-control" placeholder=" le type du don " >
-                </div>
-                @if($errors->any('type'))
-                <span class="text-danger"> {{$errors->first('type')}} </span>
-                @endif
-            </div>
+           
            
             <div class="form-group">
+                <label  style="color:#FF0000";>*  </label>
                 <label> La date du versement</label>
                 <input type="date"  name="date" value="{{ $dons->date }}" id="start"  value="aaaa-mm-jj" >
                 @if($errors->any('date'))
@@ -70,6 +66,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label> Le montant du don</label>
                     <input type="number"  name="montant" id="montant" value="{{ $dons->montant }}" placeholder="Le montant du don" > <label> DT</label>
                 </div>

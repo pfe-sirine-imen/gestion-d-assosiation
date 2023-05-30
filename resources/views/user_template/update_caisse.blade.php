@@ -3,7 +3,7 @@
 <div class="card">
     <div class="header">
        <div class="col-md-8">
-         <h4 class="title">Modifier  les opérations des caisses</h4>
+         <h4 Align=Center>Modifier  les opérations des caisses</h4>
 
         @if(session('status'))
             <div class="alert alert-success">
@@ -16,6 +16,7 @@
             @csrf
                 <input type="text" name="id" style="display:none;"  value="{{ $caisse->id }}">
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>N CIN</label>
                     <input type="number"  class="form-control"  name ="cin" value="{{ $caisse->cin }}" placeholder="N CIN " >
                     @if($errors->any('cin'))
@@ -23,6 +24,7 @@
                     @endif
                 </div>  
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>Nom  du projet</label>
                     <input type="text"  class="form-control"  name ="nom"  value="{{ $caisse->nom }}"  placeholder="Nom  du projet" >
                     @if($errors->any('nom'))
@@ -30,6 +32,7 @@
                     @endif
                 </div>
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>Nom  de activite </label>
                     <input type="text"  class="form-control"  name ="activite" value="{{ $caisse->activite }}"  placeholder="Nom  du projet" >
                     @if($errors->any('activite'))
@@ -37,20 +40,16 @@
                     @endif
                 </div>
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>La Responsable d'assosiation  </label>
                     <input type="text"  class="form-control"  name ="responsable" value="{{ $caisse->responsable }}"  placeholder="  la Responsable dassosiation" >
                     @if($errors->any('responsable'))
                     <span class="text-danger"> {{$errors->first('responsable')}} </span>
                     @endif
                 </div>
+                
                 <div class="form-group">
-                    <label> Solde d'ouverture</label>
-                    <input type="number"  class="form-control"  name ="solde" value="{{ $caisse->solde }}"  placeholder=" Solde douverture" >
-                    @if($errors->any('solde'))
-                    <span class="text-danger"> {{$errors->first('solde')}} </span>
-                    @endif
-                </div>
-                <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label> Bénéficiaire </label>
                     <input type="text"  class="form-control"  name ="benefice"  value="{{ $caisse->benefice }}"  placeholder=" Beneficiaire" >
                     @if($errors->any('benefice'))
@@ -60,6 +59,7 @@
             
                 <div class="col-md-12">
                     <div class="form-group">
+                        <label  style="color:#FF0000";>*  </label>
                         <label>la  Date </label>
                         <input type="date"  name="date" value="{{ $caisse->date }}"   id="start"  value="aaaa-mm-jj" >
                         @if($errors->any('date'))
@@ -68,6 +68,7 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label> Heure de  operation de caisse</label>
                     <input type="time"  name="heure"  value="{{ $caisse->heure }}"  >
                     @if($errors->any('heure'))
@@ -75,6 +76,7 @@
                     @endif
                 </div>
                 <div class="form-group">
+                    <label  style="color:#FF0000";>*  </label>
                     <label>total des dépenses</label>
                     <input type="number"  class="form-control"  name ="total" value="{{ $caisse->total }}"  placeholder="total des depenses" >
                     @if($errors->any('total'))

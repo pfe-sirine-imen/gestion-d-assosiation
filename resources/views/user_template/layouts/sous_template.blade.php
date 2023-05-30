@@ -10,8 +10,8 @@
 <div class="card-body">
   <div class="author">
     <a href="#">
-        <img class="avatar border-gray" src="{{asset('home/img/faces/im1.jpg')}}" alt="...">
-        <h5 class="title">WAFI Sabrine</h5>
+        <img class="avatar border-gray" src="{{asset('dashboard/assets/img/im1.jpeg')}}" alt="...">
+        <h5 class="title">Assosiation feminine Nour </h5>
     </a>
     
 </div>

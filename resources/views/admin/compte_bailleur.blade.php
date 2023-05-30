@@ -7,7 +7,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Listes des Comptes des bailleurs des fonds</h4>
+                                <h4 Align=Center>Listes des Comptes des bailleurs des fonds</h4>
+                                @if(session('status'))
+                                    <div class="alert alert-success">
+                                        {{session('status')}}
+                                    </div>
+                                @endif 
+                                <a href="/profil_b" style="background-color:#E74C3C ;  color:white" class="btn btn-info btn-fill pull-right" >Ajouter un compte de bailleur de fond</a> 
                              
                             </div>
                             <div class="content table-responsive table-full-width">

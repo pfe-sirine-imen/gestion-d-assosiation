@@ -7,11 +7,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Listes des stocks du dons</h4>
+                    <h4 Align=Center>Listes des stocks du dons</h4>
                     <div class="row g-3 align-items-center mt-2">
                     <div class="col-auto">
                     <form action="/consulter_dons" method="GET">
-                        <input type="search" id="inputPassword6"  name="search" placeholder="Rechercher un nom..."  class="form-control" aria-labelledby="passwordHelpInline">
+                        <input type="text"  placeholder="Rechercher un nom..."  name="search" >
+                        <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                     </div>
                     </div>

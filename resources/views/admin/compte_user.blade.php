@@ -8,7 +8,7 @@
                         <div class="card">
                             <div class="header">
                             
-                                <h4 class="title">Liste des Comptes d'utilisateurs</h4>
+                                <h4 Align=Center>Liste des Comptes d'utilisateurs</h4>
                                 <a href="/profil" style="background-color:#E74C3C ;  color:white" class="btn btn-info btn-fill pull-right" >Ajouter un compte d'utilisateur</a>                        
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">

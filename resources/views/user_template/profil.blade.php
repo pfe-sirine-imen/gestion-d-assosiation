@@ -6,7 +6,7 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Page profil</h4>
+                                <h4 Align=Center>Page profil</h4>
                                        @if(session('status'))
                                         <div class="alert alert-success">
                                             {{session('status')}}
@@ -20,6 +20,7 @@
                                     
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Adresse E-mail</label>
                                                 <input type="text" class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="mail" placeholder="Adresse E-mail" >
                                             </div>
@@ -28,6 +29,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
+                                            <label  style="color:#FF0000";>*  </label>
                                                 <label>Mot de passe</label>
                                                 <input type="password" class="form-control" name="pwd"  pattern=".{6,}" placeholder="Mot de passe" >
                                             </div>
@@ -41,6 +43,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Nom</label>
                                                 <input type="text" class="form-control"  name="nom" placeholder="nom" >
                                             @if($errors->any('nom'))
@@ -50,6 +53,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Prenom</label>
                                                 <input type="text" class="form-control" name="prenom" placeholder="prenom" >
                                             @if($errors->any('prenom'))
@@ -60,6 +64,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Domaine d'activités</label>
                                                 <input type="text" class="form-control" name="domaine_activite"  placeholder="Domaine d'activites" >
                                             @if($errors->any('domaine_activite'))
@@ -72,6 +77,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Adresse</label>
                                                 <input type="text" class="form-control"  placeholder="Adresse" >
                                             
@@ -82,6 +88,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>pays</label>
                                                 <input type="text" class="form-control" name="pays" placeholder="Pays" >
                                             @if($errors->any('pays'))
@@ -91,6 +98,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Ville</label>
                                                 <input type="text" class="form-control" placeholder="Ville" >
                                             
@@ -98,6 +106,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label> Code Postal</label>
                                                 <input type="number" class="form-control" placeholder="code postal">
                                             
@@ -106,6 +115,7 @@
                                         
                                         <div class="col-md-4">
                                             <div class="form-group">
+                                                <label  style="color:#FF0000";>*  </label>
                                                 <label>Numero de téléphone</label>
                                                 <input type="text" class="form-control" name="tel"  placeholder="numeroo de telephone" >
                                             @if($errors->any('tel'))

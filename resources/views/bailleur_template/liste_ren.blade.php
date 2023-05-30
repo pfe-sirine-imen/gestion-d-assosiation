@@ -7,14 +7,19 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Listes des reunions</h4>
+                    <h4 Align=Center>Listes des reunions</h4>
                     <div class="row g-3 align-items-center mt-2">
                     <div class="col-auto">
                     <form action="/consulter_reunion" method="GET">
-                        <input type="search" id="inputPassword6"  name="search" placeholder="Rechercher un nom..."  class="form-control" aria-labelledby="passwordHelpInline">
+                        <input type="text"  placeholder="Rechercher un nom..."  name="search" >
+                        <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                     </div>
+                    <div class="d-grid">
+                        <a href="{{ Route('pdf')}}"><i class="fas fa-file-edit">Télecharger PDF</i></a>
                     </div>
+                    </div>
+                    
                         @if(session('status'))
                             <div class="alert alert-success">
                                 {{session('status')}}
@@ -31,7 +36,6 @@
                             <th>Date de reunion</th>
                             <th>Heure de  reunion</th>
                             <th>place de reunion </th>
-                            <th>Compte rendu  de reunion </th>
                         </thead>
                         <tbody>
                         @php
@@ -47,7 +51,6 @@
                                 <td>{{ $reunion->date  }}</td>
                                 <td>{{ $reunion->heure  }}</td>
                                 <td>{{ $reunion->place  }}</td>
-                                <td><img  src="/image/{{ $reunion->rendu  }}" width="70px" height="70px" alt=""></td>
                            
                                 
                             </tr>

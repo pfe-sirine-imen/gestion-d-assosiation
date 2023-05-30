@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 
 
-class User extends Authenticatable
+class User extends Authenticatable  implements MustVerifyEmail
 {
     use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
@@ -24,7 +24,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+       
     ];
+
+
+
+
+    
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,4 +52,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+
+ 
 }
