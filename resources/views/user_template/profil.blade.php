@@ -22,7 +22,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Adresse E-mail</label>
-                                                <input type="text" class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="mail" placeholder="Adresse E-mail" >
+                                                <input type="text" class="form-control" value="{{ old('mail') }}"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="mail" placeholder="Adresse E-mail" >
                                             </div>
                                             @if($errors->any('mail'))
                                             <span class="text-danger"> {{$errors->first('mail')}} </span>
@@ -31,7 +31,7 @@
                                         <div class="form-group">
                                             <label  style="color:#FF0000";>*  </label>
                                                 <label>Mot de passe</label>
-                                                <input type="password" class="form-control" name="pwd"  pattern=".{6,}" placeholder="Mot de passe" >
+                                                <input type="password" class="form-control" value="{{ old('pwd') }}" name="pwd"  pattern=".{6,}" placeholder="Mot de passe" >
                                             </div>
                                             @if($errors->any('pwd'))
                                             <span class="text-danger"> {{$errors->first('pwd')}} </span>
@@ -43,33 +43,27 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                                
                                                 <label>Nom</label>
-                                                <input type="text" class="form-control"  name="nom" placeholder="nom" >
-                                            @if($errors->any('nom'))
-                                            <span class="text-danger"> {{$errors->first('nom')}} </span>
-                                            @endif
+                                                <input type="text" class="form-control" value="{{ old('nom') }}" name="nom" placeholder="nom" >
+                                            
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                               
                                                 <label>Prenom</label>
-                                                <input type="text" class="form-control" name="prenom" placeholder="prenom" >
-                                            @if($errors->any('prenom'))
-                                            <span class="text-danger"> {{$errors->first('prenom')}} </span>
-                                            @endif
+                                                <input type="text" class="form-control" value="{{ old('prenom') }}" name="prenom" placeholder="prenom" >
+                                           
                                             </div>
                                         </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                                
                                                 <label>Domaine d'activités</label>
-                                                <input type="text" class="form-control" name="domaine_activite"  placeholder="Domaine d'activites" >
-                                            @if($errors->any('domaine_activite'))
-                                            <span class="text-danger"> {{$errors->first('domaine_activite')}} </span>
-                                            @endif
+                                                <input type="text" class="form-control" value="{{ old('domaine_activite') }}" name="domaine_activite"  placeholder="Domaine d'activites" >
+                                            
                                             </div>
                                         </div>
                                     
@@ -77,7 +71,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                               
                                                 <label>Adresse</label>
                                                 <input type="text" class="form-control"  placeholder="Adresse" >
                                             
@@ -88,17 +82,15 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                                
                                                 <label>pays</label>
-                                                <input type="text" class="form-control" name="pays" placeholder="Pays" >
-                                            @if($errors->any('pays'))
-                                            <span class="text-danger"> {{$errors->first('pays')}} </span>
-                                            @endif
+                                                <input type="text" class="form-control"  value="{{ old('pays') }}" name="pays" placeholder="Pays" >
+                                            
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                               
                                                 <label>Ville</label>
                                                 <input type="text" class="form-control" placeholder="Ville" >
                                             
@@ -106,21 +98,19 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                               
                                                 <label> Code Postal</label>
-                                                <input type="number" class="form-control" placeholder="code postal">
+                                                <input type="number" class="form-control"   min="0" placeholder="code postal">
                                             
                                             </div>
                                         </div>
                                         
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label  style="color:#FF0000";>*  </label>
+                                              
                                                 <label>Numero de téléphone</label>
-                                                <input type="text" class="form-control" name="tel"  placeholder="numeroo de telephone" >
-                                            @if($errors->any('tel'))
-                                            <span class="text-danger"> {{$errors->first('tel')}} </span>
-                                            @endif
+                                                <input type="text" class="form-control" name="tel" value="{{ old('tel') }}"  min="0" placeholder="numeroo de telephone" >
+                                           
                                             </div>
                                         </div>
                                     </div>
@@ -128,6 +118,7 @@
                                    
 
                                     <button type="submit" style="background-color:#A569BD ; border-color:#A569BD ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>Modifier Profil</button>
+
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

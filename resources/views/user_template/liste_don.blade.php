@@ -44,7 +44,7 @@
     
                                 <tr>
                                     <td>{{ $ide }}</td>
-                                    <td>{{ $don->type  }}</td>
+                                    <td>{{ $don->type }}</td>
                                     <td>{{ $don->nature  }}</td>
                                     <td>{{ $don->destination }}</td>
                                    

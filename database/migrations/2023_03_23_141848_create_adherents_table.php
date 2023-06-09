@@ -17,7 +17,7 @@ class CreateAdherentsTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('mail');
+            $table->string('mail')->unique();
             $table->integer('pwd');
             $table->string('pays');
             $table->date('age');

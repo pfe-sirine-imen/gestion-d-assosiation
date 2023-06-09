@@ -1,9 +1,5 @@
 @extends('admin.layouts.template')
 @section('content')
-
-
-
-
 <div class="container">
 
     <div class="container-fluid">
@@ -29,7 +25,7 @@
                     </div>
 
                     <div class="d-grid">
-                        <a href="/adherents" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter Adherent</a>
+                        <a href="/A" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter Adherent</a>
                     </div>
                        
                     <div class="content table-responsive table-full-width">
@@ -64,9 +60,9 @@
                                     <td><img src="{{ asset('image/'.$adherents->photo)}}" width="70px" height="70px" alt=""></td>
                                     <td>
                                         
-                                        <a href="/update_A/{{ $adherents->id}}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>modifier</a>
+                                        <a href="/admin/update_A/{{ $adherents->id}}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>modifier</a>
                                     <form 
-                                        action="/sup_A/{{ $adherents->id}}"
+                                        action="/admin/sup_A/{{ $adherents->id}}"
                                         method="get"
                                         class="inline-block"
                                         onsubmit="return confirm('Etre-vous sur?');">

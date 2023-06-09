@@ -3,76 +3,159 @@
 <div class="container-fluid py-4">
 <div class="row">
 
-
-
-<div class="row mb-4">
-  <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-    <div class="card">
-      <div class="card-header pb-0">
-        <div class="row">
-          <div class="col-lg-6 col-7">
-            <h6>Les comptes d'utilisateurs</h6>
-            <p class="text-sm mb-0">
-              <i class="fa fa-check text-info" aria-hidden="true"></i>
-              <span class="font-weight-bold ms-1"></span> fait ce mois-ci
-            </p>
+  <div class="row">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
           </div>
-          
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  d'utilisateur</p>
+            <h4 class="mb-0">{{$totalUser}}</h4>
+          </div>
         </div>
-      </div>
-      <div class="card-body px-0 pb-2">
-        <div class="table-responsive">
-          <table class="table align-items-center mb-0">
-            <thead>
-              <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom d'assosition</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Membres</th>
-              
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img src="{{asset('dashboard/assets/img/im1.jpeg')}}" class="avatar avatar-sm me-3" alt="xd">
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Assosiation feminine Nour </h6>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="avatar-group mt-2">
-                    <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Wafi Sabrine">
-                      <img src="{{asset('home/img/faces/im1.jpg')}}" alt="team1">
-                    </a>
-                    
-                  </div>
-                </td>
-               
-                </tr>
-              </tr>
-              
-               
-                    
-            </tbody>
-          </table>
-        </div>
-
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="{{route('compte_user')}}" class="text-black">voir</a>
         
+        </div>
+
       </div>
-
-
+      <hr>
     </div>
-    
-  </div>
+ 
 
 
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  des chef de suivi</p>
+            <h4 class="mb-0">{{$totalBailleur}}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="{{route('compte_bailleur')}}" class="text-black">voir</a>
+        </div>
+      </div>
+    </div>
 
 
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  des adhérents</p>
+            <h4 class="mb-0">{{ $totalAdherent}}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="/listeA" class="text-black">voir</a>
+        </div>
+      </div>
+    </div>
   
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  des évenements</p>
+            <h4 class="mb-0">{{$totalAdherent}}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="/listeE" class="text-black">voir</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  des Réunions</p>
+            <h4 class="mb-0">{{$totalReunion}}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="/listeR" class="text-black">voir</a>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  des dons</p>
+            <h4 class="mb-0">{{$totalDon}}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="/listeD" class="text-black">voir</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  des caisses</p>
+            <h4 class="mb-0">{{$totalCaisse}}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="/listeC" class="text-black">voir</a>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-3 pt-2">
+          <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <div class="text-end pt-1">
+            <p class="text-sm mb-0 text-capitalize">Nombre  des projets</p>
+            <h4 class="mb-0">{{$totalProjet}}</h4>
+          </div>
+        </div>
+        <hr class="dark horizontal my-0">
+        <div class="card-footer p-3">
+          <a href="/listeP" class="text-black">voir</a>
+        </div>
+      </div>
+    </div>
+    <hr>
+
   <div class="col-lg-4 col-md-6">
     <div class="card h-100">
       <div>Menu </h6>
@@ -135,7 +218,10 @@
             </div>
           </div>
         </div>
+        
       </div>
+
+      
     </div>
   </div>
 </div>

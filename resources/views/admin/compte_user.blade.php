@@ -9,7 +9,14 @@
                             <div class="header">
                             
                                 <h4 Align=Center>Liste des Comptes d'utilisateurs</h4>
-                                <a href="/profil" style="background-color:#E74C3C ;  color:white" class="btn btn-info btn-fill pull-right" >Ajouter un compte d'utilisateur</a>                        
+                                @if(session('status'))
+                                    <div class="alert alert-success">
+                                        {{session('status')}}
+                                    </div>
+                                @endif 
+
+
+                                <a href='/ajouteruser' style="background-color:#E74C3C ;  color:white" class="btn btn-info btn-fill pull-right" >Ajouter un compte d'utilisateur</a>                        
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <thead>
@@ -20,6 +27,7 @@
                                         <th>Domaine d'activités</th>
                                         <th>Pays</th>
                                         <th>Tel</th>
+                                        <th>Action</th>
                                     	
                                     </thead>
                                     <tbody> 
@@ -32,7 +40,21 @@
                                             <td>{{ $profil_users->domaine_activite }}</td>
                                             <td>{{ $profil_users->pays }}</td>
                                             <td>{{ $profil_users->tel }}</td>
-                                           
+                                            <td>
+                                        
+                                                <a href="/admin/update_A/{{ $profil_users->id}}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>modifier</a>
+                                            <form 
+                                                action="/admin/sup_A/{{$profil_users->id}}"
+                                                method="get"
+                                                class="inline-block"
+                                                onsubmit="return confirm('Etre-vous sur?');">
+                                                
+                
+                                                {{csrf_field()}}
+                                                {{method_field('get')}}
+                                                <input type="submit" value="Supprimer" style="background-color:#DE3163 ; border-color:#DE3163 ; color:white" class="btn btn-info btn-fill pull-right">
+                                            </form>
+                                            </td>
                                            
                                         </tr>
                                     @endforeach

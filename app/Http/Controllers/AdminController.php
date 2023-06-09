@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use DB;
 use App\Models\User;
 use App\Models\Reunion;
 use App\Models\Adherents;
@@ -21,45 +22,15 @@ class AdminController extends Controller
     }
 
 
-
-
-   
-    public function  addbailleur(Request  $request){
  
-        $request->validate([
-            'nom' =>'required|string',
-            'prenom'=>'required|string',
-            'mail'=>'required|email',
-            'pwd'=>'required',
-            'pays'=>'required|string',
-            'denomination'=>'required|string',
-           
-        ]);
-
-        $bailleurs= new Bailleur();
-        $bailleurs->nom=$request->nom; 
-        $bailleurs->prenom=$request->prenom;
-        $bailleurs->mail=$request->mail;
-        $bailleurs->pwd=$request->pwd;
-        $bailleurs->pays=$request->pays;
-        $bailleurs->denomination=$request->denomination;
-       
-        $bailleurs->save();
-
-      return redirect('/profilpage')->with('status','ajouter bailleur succes!');
-   }
-
-    
-
-
-
-
     public function  listeA(Request $request){
         if($request->has('search')){
-            $adherent = Adherents::where('nom','LIKE','%'.$request->search.'%')->paginate(4);
+            $adherent = Adherents::where('nom','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $adherent =  Adherents::paginate(3);
+            $adherent = DB::table('adherents')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('admin.listeA' ,compact('adherent'));
@@ -71,9 +42,9 @@ class AdminController extends Controller
             'nom' =>'required|string',
             'prenom'=>'required|string',
             'mail'=>'required|email',
-            'pwd'=>'required|min:6|',
+            'pwd'=>'required',
             'pays'=>'required|string',
-            'age'=>'required',
+            'age'=>'required|date',
             'tel'=>'required|max:8',
             'situation'=>'required',
             'code'=>'required',
@@ -88,7 +59,7 @@ class AdminController extends Controller
         $adherents->nom=$request->nom;
         $adherents->prenom=$request->prenom;
         $adherents->mail=$request->mail;
-        $adherents->pwd=$request->pwd;
+        $adherents->pwd=Hash::make($request->pwd);
         $adherents->pays=$request->pays;
         $adherents->age=$request->age;
         $adherents->tel=$request->tel;
@@ -106,14 +77,14 @@ class AdminController extends Controller
         }
             $adherents->save();  
             
-            return redirect('/listeA')->with('status','ajouter adherents succes!');
+            return redirect('/listeA')->with('status','ajouter adherent succes!');
  
     }
 
 
    public function update_A($id){
     $adherents =Adherents::findOrFail($id);
-    return view ('admin.Update_A',compact('adherents'));
+    return view ('admin.update_A',compact('adherents'));
     }
    
     
@@ -124,7 +95,7 @@ class AdminController extends Controller
             'mail'=>'required|email',
             'pwd'=>'required',
             'pays'=>'required|string',
-            'age'=>'required',
+            'age'=>'required|date',
             'tel'=>'required|max:8',
             'situation'=>'required',
             'code'=>'required',
@@ -137,7 +108,7 @@ class AdminController extends Controller
         $adherents->nom=$request->nom;
         $adherents->prenom=$request->prenom;
         $adherents->mail=$request->mail;
-        $adherents->pwd=$request->pwd;
+        $adherents->pwd=Hash::make($request->pwd);
         $adherents->pays=$request->pays;
         $adherents->age=$request->age;
         $adherents->tel=$request->tel;
@@ -155,7 +126,7 @@ class AdminController extends Controller
         }
         
         $adherents->update();
-        return redirect('listeA')->with('status','Modifier adherent succes!');
+        return redirect('/listeA')->with('status','Modifier adherent succes!');
     }
 
    
@@ -164,7 +135,7 @@ class AdminController extends Controller
     public function  sup_A($id){
         $adherents =Adherents::findOrFail($id);
         $adherents->delete();
-        return redirect('listeA')->with('status','Supprimer adherents succes!');
+        return redirect('/listeA')->with('status','Supprimer adherent succes!');
     }
 
 
@@ -174,7 +145,7 @@ class AdminController extends Controller
             'titre' =>'required|string',
             'invite' =>'required',
             'mail' =>'required|email',
-            'date' =>'required',
+            'date' =>'required|date',
             'heure' =>'required',
             'place' =>'required|string',
             //'rendu' =>'required',
@@ -194,9 +165,11 @@ class AdminController extends Controller
 
     public function  listeR(Request $request){
         if($request->has('search')){
-            $reunions = Reunion::where('titre','LIKE','%'.$request->search.'%')->paginate(4);
+            $reunions = Reunion::where('titre','LIKE','%'.$request->search.'%')->paginate(10);
         }else{
-            $reunions =  Reunion::paginate(4);
+            $reunions =  DB::table('reunions')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         return view ('admin.listeR' ,compact('reunions'));
     }
@@ -211,7 +184,7 @@ class AdminController extends Controller
             'titre' =>'required|string',
             'invite' =>'required',
             'mail' =>'required|email',
-            'date' =>'required',
+            'date' =>'required|date',
             'heure' =>'required',
             'place' =>'required|string',
             //'rendu' =>'required',
@@ -254,8 +227,8 @@ class AdminController extends Controller
         $request->validate([
              'titre' => 'required|string',
              'responsable' => 'required|string',
-             'date_debut' => 'required',
-             'date_fin' => 'required',
+             'date_debut' => 'required|date',
+             'date_fin' => 'required|date|after_or_equal:date_debut',
              'objectif' => 'required',
              'lieu' => 'required|string',
         ]);
@@ -269,16 +242,18 @@ class AdminController extends Controller
          $events->lieu = $request->lieu;
          $events->save();
          
-         return redirect('/E')->with('status','ajouter les evenement avec   succes!');
+         return redirect('/listeE')->with('status','ajouter les evenement avec   succes!');
         
      }
     
      public function listeE(Request $request){
          if($request->has('search')){
-             $event = Events::where('titre','LIKE','%'.$request->search.'%')->paginate(4);
+             $event = Events::where('titre','LIKE','%'.$request->search.'%')->paginate(10);
  
          }else{
-             $event = Events::paginate(4);
+             $event = DB::table('events')
+             ->orderBy('id','DESC')
+             ->paginate(10);
          }
          
          return view ('admin.listeE',compact('event'));
@@ -294,8 +269,8 @@ class AdminController extends Controller
          $request->validate([
              'titre' => 'required|string',
              'responsable' => 'required|string',
-             'date_debut' => 'required',
-             'date_fin' => 'required',
+             'date_debut' => 'required|date',
+             'date_fin' => 'required|date|after_or_equal:date_debut',
              'objectif' => 'required',
              'lieu' => 'required|string',
         ]);
@@ -322,8 +297,8 @@ class AdminController extends Controller
             'nom' => 'required|string',
             'objectif' => 'required|string',
             'responsable' => 'required|string',
-            'date_debut' => 'required',
-            'date_fin' => 'required',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
             'montant' => 'required',
             'etat' => 'required',
         ]);
@@ -337,15 +312,17 @@ class AdminController extends Controller
         $projet->etat = $request->etat;
         $projet->save();
 
-        return redirect('/P')->with('status','Ajouter un projet avec succes!');
+        return redirect('/listeP')->with('status','Ajouter un projet avec succes!');
     }
 
     public function listeP(Request $request){
         if($request->has('search')){
-            $projets = Projet::where('nom','LIKE','%'.$request->search.'%')->paginate(4);
+            $projets = Projet::where('nom','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $projets = Projet::paginate(4);
+            $projets = DB::table('projets')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
        
         return view ('admin.listeP',compact('projets'));
@@ -359,8 +336,8 @@ class AdminController extends Controller
             'nom' => 'required|string',
             'objectif' => 'required|string',
             'responsable' => 'required|string',
-            'date_debut' => 'required',
-            'date_fin' => 'required',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
             'montant' => 'required',
             'etat' => 'required',
         ]);
@@ -389,8 +366,9 @@ class AdminController extends Controller
             'nature' => 'required|string',
             'donateur' => 'required|string',
             'type' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'montant' => 'required',
+            'bailleur_id'=>'required',
        ]);
         $don= new Don();
         $don->nom = $request->nom;
@@ -400,9 +378,10 @@ class AdminController extends Controller
         $don->type = $request->type;
         $don->date = $request->date;
         $don->montant = $request->montant;
+        $don->bailleur_id=$request->bailleur_id;
         $don->save();
 
-        return redirect('/D')->with('status','Ajouter un don avec succes!');
+        return redirect('/listeD')->with('status','Ajouter un don avec succes!');
 
     }
 
@@ -411,10 +390,12 @@ class AdminController extends Controller
     
     public function listeD(Request $request){
         if($request->has('search')){
-            $dons = Don::where('nom','LIKE','%'.$request->search.'%')->paginate(4);
+            $dons = Don::where('nom','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $dons = Don::paginate(4);
+            $dons = DB::table('dons')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('admin.listeD',compact('dons'));
@@ -424,7 +405,8 @@ class AdminController extends Controller
 
     public function update_D($id){
         $dons = Don::find($id);
-        return view ('admin.update_D',compact('dons'));
+        return view ("admin.update_D",compact('dons'));
+        
     }
     
     public function update_D_trat(Request $request){
@@ -434,7 +416,7 @@ class AdminController extends Controller
             'nature' => 'required|string',
             'donateur' => 'required|string',
             'type' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'montant' => 'required',
        ]);
        $don=  Don::find($request->id);
@@ -464,11 +446,11 @@ class AdminController extends Controller
 
     public function C(Request  $request){
         $request->validate([
-            'cin' => 'required|min:8|max:8',
+            'cin' => 'required|integer',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'benefice' => 'required|string',
             'heure' => 'required',
             //'solde' => 'required',
@@ -485,7 +467,7 @@ class AdminController extends Controller
        //$caisse->solde = $request->solde;
        $caisse->total = $request->total;
        $caisse->save();
-       return redirect('/C')->with('status','ajouter les operation des caisses  avec   succes!');
+       return redirect('/listeC')->with('status','ajouter les operation des caisses  avec   succes!');
     }
     
 
@@ -493,10 +475,13 @@ class AdminController extends Controller
 
     public function listeC(Request $request){
         if($request->has('search')){
-            $caisses = Caisse::where('cin','LIKE','%'.$request->search.'%')->paginate(4);
+            $caisses = Caisse::where('cin','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $caisses = Caisse::paginate(4);
+            
+            $caisses = DB::table('caisses')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('admin.listeC',compact('caisses'));
@@ -510,11 +495,11 @@ class AdminController extends Controller
     
     public function  update_C_tart(Request $request){
         $request->validate([
-            'cin' => 'required|min:8|max:8|integer',
+            'cin' => 'required|integer',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'benefice' => 'required|string',
             'heure' => 'required',
             //'solde' => 'required',

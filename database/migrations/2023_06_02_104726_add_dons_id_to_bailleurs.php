@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleAsColumnToUsersTable extends Migration
+class AddDonsIdToBailleurs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddRoleAsColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('role_as')->default('0');
+        Schema::table('bailleurs', function (Blueprint $table) {
+            $table->string('dons_id');
+            $table->foreign('dons_id')->references('id')->on('dons');
+
+
         });
     }
 
@@ -25,8 +28,8 @@ class AddRoleAsColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role_as');
+        Schema::table('bailleurs', function (Blueprint $table) {
+            //
         });
     }
 }

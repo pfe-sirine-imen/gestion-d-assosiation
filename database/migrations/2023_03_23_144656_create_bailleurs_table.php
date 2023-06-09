@@ -16,11 +16,15 @@ class CreateBailleursTable extends Migration
         Schema::create('bailleurs', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+
             $table->string('prenom');
-            $table->string('mail');
+            $table->string('mail')->unique();
             $table->integer('pwd');
             $table->string('pays');
             $table->string('denomination');
+          
+            
+            
             $table->timestamps();
         });
     }

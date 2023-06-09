@@ -30,7 +30,7 @@
                             <th>Nom  du projet</th>
                             <th>Nom  de activite</th>
                             <th>La Responsable d'assosiation</th>
-                            <th> Solde d'ouverture</th>
+                          
                             <th>Bénéficiaire </th>
                             <th> la  Date</th>
                             <th>Heure de  operation de caisse </th>
@@ -49,7 +49,7 @@
                                 <td>{{ $caisse->nom }}</td>
                                 <td>{{ $caisse->activite  }}</td>
                                 <td>{{ $caisse->responsable  }}</td>
-                                <td>{{ $caisse->solde  }}</td>
+                            
                                 <td>{{ $caisse->benefice  }}</td>
                                 <td>{{ $caisse->date  }}</td>
                                 <td>{{ $caisse->heure  }}</td>

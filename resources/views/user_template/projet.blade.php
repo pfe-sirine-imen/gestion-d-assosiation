@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label  style="color:#FF0000";>*  </label>
                             <label>Nom du projet</label>
-                            <input type="text" class="form-control" name="nom" placeholder="Nom du projet" >
+                            <input type="text" class="form-control" value="{{ old('nom') }}" name="nom" placeholder="Nom du projet" >
                         </div>
                         @if($errors->any('nom'))
                         <span class="text-danger"> {{$errors->first('nom')}} </span>
@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label  style="color:#FF0000";>*  </label>
                             <label>L'objectif du projet</label>
-                            <input type="text" class="form-control" name="objectif" placeholder="L'objectif du projet" >
+                            <input type="text" class="form-control" value="{{ old('objectif') }}" name="objectif" placeholder="L'objectif du projet" >
                         </div>
                         @if($errors->any('objectif'))
                         <span class="text-danger"> {{$errors->first('objectif')}} </span>
@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <label  style="color:#FF0000";>*  </label>
                             <label>la responsable du projet</label>
-                            <input type="text" class="form-control" name="responsable" placeholder="Responsable du projet" >
+                            <input type="text" class="form-control" value="{{ old('responsable') }}" name="responsable" placeholder="Responsable du projet" >
                         </div>
                         @if($errors->any('responsable'))
                         <span class="text-danger"> {{$errors->first('responsable')}} </span>
@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <label  style="color:#FF0000";>*  </label>
                             <label>la  Date debut  du projet</label>
-                            <input type="date"  name="date_debut" id="start"  value="aaaa-mm-jj" >
+                            <input type="date"  name="date_debut" value="{{ old('date_debut') }}" id="start"  value="aaaa-mm-jj" >
                          </div>
                          @if($errors->any('date_debut'))
                         <span class="text-danger"> {{$errors->first('date_debut')}} </span>
@@ -67,7 +67,7 @@
                         <div class="form-group">
                             <label  style="color:#FF0000";>*  </label>
                             <label>la Date fin du projet</label>
-                            <input type="date"  name="date_fin" id="start"  value="aaaa-mm-jj" >
+                            <input type="date"  name="date_fin" value="{{ old('date_fin') }}" id="start"  value="aaaa-mm-jj" >
                          </div>
                          @if($errors->any('date_fin'))
                         <span class="text-danger"> {{$errors->first('date_fin')}} </span>
@@ -78,7 +78,7 @@
                         <div class="form-group">
                             <label  style="color:#FF0000";>*  </label>
                             <label>le montant de la dépense</label>
-                            <input type="number" class="form-control" name="montant" placeholder="le montant de la dépense" >
+                            <input type="number" class="form-control" value="{{ old('montant') }}" min="0" name="montant" placeholder="le montant de la dépense" >
                         </div>
                         @if($errors->any('montant'))
                         <span class="text-danger"> {{$errors->first('montant')}} </span>
@@ -88,7 +88,7 @@
                         <div class="form-group">
                             <label  style="color:#FF0000";>*  </label>
                             <label>l'état d'avancement du projet(%)</label>
-                            <input type="number" class="form-control" name="etat" placeholder="l'état d'avancement du projet" >
+                            <input type="number" class="form-control" min="0" value="{{ old('etat') }}" name="etat" placeholder="l'état d'avancement du projet" >
                         </div>
                         @if($errors->any('etat'))
                         <span class="text-danger"> {{$errors->first('etat')}} </span>

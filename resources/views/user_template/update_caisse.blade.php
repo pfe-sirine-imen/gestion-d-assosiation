@@ -12,7 +12,7 @@
         @endif  
         
              
-        <form action="/update_caisse/trat"  method="POST" enctype="multipart/form-data">
+        <form action="update_caisse/trat"  method="POST" enctype="multipart/form-data">
             @csrf
                 <input type="text" name="id" style="display:none;"  value="{{ $caisse->id }}">
                 <div class="form-group">

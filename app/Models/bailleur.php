@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeUserMail;
 use Illuminate\Database\Eloquent\fill;
 //use App\Http\Controllers\profile;
+use App\Models\Don;
 
 class bailleur extends Model  
 {
     use HasFactory;
     protected $fillable = [
+     
         'nom',
         'prenom',
         'mail',
@@ -23,6 +25,9 @@ class bailleur extends Model
         
        
     ];
+    public function don(){
+        return $this->belongsTo(Don::class); //'App\Models\Don'
+    }
 
     
             

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Bailleur;
 
 class Don extends Model
 {
@@ -16,5 +17,11 @@ class Don extends Model
         'type',
         'date',
         'montant',
+        
     ];
+
+    public function bailleurs(){
+        return $this->hasMany(Bailleur::class);
+      
+    }
 }

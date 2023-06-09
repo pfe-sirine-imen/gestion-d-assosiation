@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>Titre de evenement</label>
-                    <input type="text"  class="form-control"  name ="titre" placeholder="Titre de evenement" >
+                    <input type="text"  class="form-control" name="titre" value="{{ old('titre') }}" placeholder="Titre de evenement" >
                     @if($errors->any('titre'))
                     <span class="text-danger"> {{$errors->first('titre')}} </span>
                     @endif
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>Responsable de evenement</label>
-                    <input type="text"  class="form-control"  name ="responsable" placeholder="Responsable de evenement" >
+                    <input type="text"  class="form-control"  name ="responsable" value="{{ old('responsable') }}" placeholder="Responsable de evenement" >
                     @if($errors->any('responsable'))
                     <span class="text-danger"> {{$errors->first('responsable')}} </span>
                     @endif
@@ -34,7 +34,7 @@
                     <label  style="color:#FF0000";>*  </label>
                     <label>Date debut de evenements</label>
                    
-                    <input type="date"  name="date_debut" id="start"  value="aaaa-mm-jj" >
+                    <input type="date"  name="date_debut" id="start" value="{{ old('date_debut') }}"  value="aaaa-mm-jj" >
                     @if($errors->any('date_debut'))
                     <span class="text-danger"> {{$errors->first('date_debut')}} </span>
                     @endif
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>Date fin de evenements</label>
-                    <input type="date" name="date_fin"  id="start"  value="aaaa-mm-jj">
+                    <input type="date" name="date_fin"  id="start" value="{{ old('date_fin') }}" value="aaaa-mm-jj">
                     @if($errors->any('date_fin'))
                     <span class="text-danger"> {{$errors->first('date_fin')}} </span>
                     @endif
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>L'objectif  de evenement</label>
-                    <textarea rows="4" cols="80" class="form-control" placeholder="L'objectif  de evenement" name="objectif"></textarea>
+                    <textarea rows="4" cols="80" class="form-control" placeholder="L'objectif  de evenement" value="{{ old('objectif') }}"  name="objectif"></textarea>
                     @if($errors->any('objectif'))
                     <span class="text-danger"> {{$errors->first('objectif')}} </span>
                     @endif
@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>Lieu  de evenement</label>
-                    <input type="text"  class="form-control" name="lieu" placeholder="Lieu de evenement" >
+                    <input type="text"  class="form-control" name="lieu" value="{{ old('lieu') }}" placeholder="Lieu de evenement" >
                     @if($errors->any('lieu'))
                     <span class="text-danger"> {{$errors->first('lieu')}} </span>
                     @endif

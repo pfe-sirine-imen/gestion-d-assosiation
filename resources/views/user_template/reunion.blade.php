@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>Titre de reunion</label>
-                    <input type="text"  class="form-control"  name ="titre" placeholder="Titre de reunion" >
+                    <input type="text"  class="form-control" value="{{ old('titre') }}" name ="titre" placeholder="Titre de reunion" >
                     @if($errors->any('titre'))
                         <span class="text-danger"> {{$errors->first('titre')}} </span>
                     @endif
@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>E-mail(s) pour invités de reunion</label>
-                    <input type="text"  class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  name ="mail" placeholder="E-mail(s) pour invités de reunion" >
+                    <input type="text"  class="form-control" value="{{ old('mail') }}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  name ="mail" placeholder="E-mail(s) pour invités de reunion" >
                     @if($errors->any('mail'))
                         <span class="text-danger"> {{$errors->first('mail')}} </span>
                     @endif
@@ -64,7 +64,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label> Date de reunion</label>
-                    <input type="date"  name="date" id="start" pattern="\d{1,2}/\d{1,2}/\d{4}" value="aaaa-mm-jj" >
+                    <input type="date"  name="date" id="start" value="{{ old('date') }}"  pattern="\d{1,2}/\d{1,2}/\d{4}" value="aaaa-mm-jj" >
                     @if($errors->any('date'))
                         <span class="text-danger"> {{$errors->first('date')}} </span>
                     @endif
@@ -72,7 +72,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label> Heure de  reunion </label>
-                    <input type="time" id="appt" name="heure" min="09:00" max="18:00" >
+                    <input type="time" id="appt" name="heure" value="{{ old('heure') }}" min="09:00" max="18:00" >
                     @if($errors->any('heure'))
                         <span class="text-danger"> {{$errors->first('heure')}} </span>
                         @endif
@@ -80,7 +80,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>place de reunion </label>
-                    <input type="text"  name="place" class="form-control" placeholder="espace de reunion" >
+                    <input type="text"  name="place" class="form-control" value="{{ old('place') }}" placeholder="espace de reunion" >
                     @if($errors->any('place'))
                         <span class="text-danger"> {{$errors->first('place')}} </span>
                     @endif

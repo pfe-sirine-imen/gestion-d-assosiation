@@ -28,6 +28,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/botman',[BotmanController::class,'handle']);
 Route::post('/botman',[BotmanController::class,'handle']);
 
+
+//Route::get('/redirects',[HomeController::class,'index']);
+
 Route::group(['middleware' => 'auth'], function () {
 Route::controller(BailleurController::class)->group(function(){
     Route::get('/bailleur','Index' )->name('bailleur');
@@ -115,17 +118,21 @@ Route::controller(AdherentsController::class)->group(function(){
  
   });
 });
-
+Route::group(['middleware' => 'auth'], function () {
 Route::controller(DashboardController::class)->group(function(){
     Route::get('/admin/dashboard','Index')->name('admindashboard');
-    Route::get('/ajouteruser','ajouteruser')->name('ajouteruser');
+   
+   
 });
 
 
 Route::controller(Compte_userController::class)->group(function(){
     Route::get('/admin/compte_user','compte_user')->name('compte_user');
-    //Route::post('/ajouteruser','ajouteruser')->name('ajouteruser');
-    Route::post('/ajoutuser/trat','ajouter_user_trat' )->name('ajouter_user_trat');
+    Route::get('/ajouteruser',function(){
+        return view('admin.ajouteruser');
+    });
+    Route::post('/admin/compte_user','ajouteruser')->name('/admin/compte_user');
+   
 
 
       
@@ -133,74 +140,99 @@ Route::controller(Compte_userController::class)->group(function(){
 
 Route::controller(Compte_bailleurController::class)->group(function(){
     Route::get('/admin/compte_bailleur','compte_bailleur')->name('compte_bailleur');
-    Route::get('/compte_bailleur','compte_bailleur')->name('compte_bailleu');
-
-    Route::get('/ajouterbail','ajouterbail')->name('ajouterbail');
+    Route::get('/ajouterbail',function(){
+        return view('admin.ajouterbail');
+    });
+    Route::post('/admin/compte_bailleur','ajouterbail')->name('/admin/compte_bailleur');
+    
+   
       
 });
 
 
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/logout','destroy')->name('admin.logout');
-    Route::post('/ajouteruser','ajouteruser')->name('ajouteruser');
+
     
 
 
-
+   
     Route::get('/listeA','listeA')->name('liste_A');
-    Route::post('/A','A' )->name('A');
-    Route::get('/update_A/{id}','update_A' )->name('update_A');
-    Route::post('/update_A/trat','update_A_trat' )->name('update_A/trat');
-    Route::get('/sup_A/{id}','sup_A' )->name('sup_A');
+    Route::get('/A',function(){
+        return view('admin.A');
+    });
+    Route::post('/admin/A','A')->name('/admin/A');
+    Route::get('/admin/update_A/{id}','update_A' )->name('admin.update_A');
+    Route::post('/admin/update_A/trat','update_A_trat' )->name('/admin/update_A_trat');
+    Route::get('/admin/sup_A/{id}','sup_A' )->name('admin.sup_A');
+
+
+
+    Route::get('/listeR','listeR')->name('liste_R');
+    Route::get('/R',function(){
+        return view('admin.R');
+    });
+    Route::post('/admin/R','R')->name('/admin/R');
+    Route::get('/admin/update_R/{id}','update_R' )->name('/admin/update_R');
+    Route::post('/admin/update_R/trat','update_R_trat' )->name('/admin/update_R_trat');
+    Route::get('/admin/sup_R/{id}','sup_R' )->name('/admin/sup_R');
+
+
 
 
     Route::get('/listeD','listeD')->name('liste_D');
-    Route::post('/D','D' )->name('D');
-    Route::get('/update_D/{id}','update_D' )->name('update_D');
-    Route::post('/update_D/trat','update_D_trat' )->name('update_D/trat');
-    Route::get('/sup_D/{id}','sup_D' )->name('sup_D');
+    Route::get('/D',function(){
+        return view('admin.D');
+    });
+    Route::post('/admin/D','D')->name('/admin/D');
+    Route::get('/admin/update_D/{id}','update_D' )->name('/admin/update_D');
+    Route::post('/admin/update_D/trat','update_D_trat' )->name('/admin/update_D_trat');
+    Route::get('/admin/sup_D/{id}','sup_D' )->name('/admin/sup_D');
 
 
 
+    
     Route::get('/listeC','listeC')->name('liste_C');
-    Route::post('/C','C' )->name('C');
-    Route::get('/update_C/{id}','update_C' )->name('update_C');
-    Route::post('/update_C/trat','update_C_trat' )->name('update_C/trat');
-    Route::get('/sup_C/{id}','sup_C' )->name('sup_C');
+    Route::get('/C',function(){
+        return view('admin.C');
+    });
+    Route::post('/admin/C','C')->name('/admin/C');
+    Route::get('/admin/update_C/{id}','update_C' )->name('/admin/update_C');
+    Route::post('/admin/update_C/trat','update_C_tart' )->name('/admin/update_C_tart');
+    Route::get('/admin/sup_C/{id}','sup_C' )->name('/admin/sup_C');
 
 
 
 
     Route::get('/listeE','listeE')->name('liste_E');
-    Route::post('/E','E' )->name('E');
-    Route::get('/update_E/{id}','update_E' )->name('update_E');
-    Route::post('/update_E/trat','update_E_trat' )->name('update_E/trat');
-    Route::get('/sup_E/{id}','sup_E' )->name('sup_E');
+    Route::get('/E',function(){
+        return view('admin.E');
+    });
+    Route::post('/admin/E','E')->name('/admin/E');
+    Route::get('/admin/update_E/{id}','update_E' )->name('/admin/update_E');
+    Route::post('/admin/update_E/trat','update_E_trat' )->name('/admin/update_E_trat');
+    Route::get('/admin/sup_E/{id}','sup_E' )->name('/admin/sup_E');
 
 
 
-
-
-    Route::get('/listeR','listeR')->name('liste_R');
-    Route::post('/R','R' )->name('R');
-    Route::get('/update_R/{id}','update_R' )->name('update_R');
-    Route::post('/update_R/trat','update_R_trat' )->name('update_R/trat');
-    Route::get('/sup_R/{id}','sup_R' )->name('sup_R');
-
-
-
+   
 
 
 
     Route::get('/listeP','listeP')->name('liste_P');
-    Route::post('/P','P' )->name('P');
-    Route::get('/update_P/{id}','update_P' )->name('update_P');
-    Route::post('/update_P/trat','update_P_trat' )->name('update_P/trat');
-    Route::get('/sup_P/{id}','sup_P' )->name('sup_P');
+    Route::get('/P',function(){
+        return view('admin.P');
+    });
+    Route::post('/admin/P','P')->name('/admin/P');
+    Route::get('/admin/update_P/{id}','update_P' )->name('/admin/update_P');
+    Route::post('/admin/update_P/trat','update_P_trat' )->name('/admin/update_P_trat');
+    Route::get('/admin/sup_P/{id}','sup_P' )->name('/admin/sup_P');
 
-      
+    
+   
 });
 
+});
 
 
 require __DIR__.'/auth.php';

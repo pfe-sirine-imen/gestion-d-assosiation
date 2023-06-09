@@ -22,11 +22,11 @@
                     <table class="table table-hover table-striped">
                         <thead>
                             <th>ID</th>
-                            <th>Nom du stock</th>
+                            <th>le type du don </th>
                             <th>la destination du don</th>
                             <th>La nature du don</th>
                             <th>L’identité du donateur (Optionnel)</th>
-                            <th>le type du don </th>
+                        
                             <th>La date du versement</th>
                             <th> Le montant du don</th>
                          
@@ -39,13 +39,15 @@
 
                             <tr>
                                 <td>{{ $ide }}</td>
-                                <td>{{ $don->nom }}</td>
+                                <td>{{ $don->type}}</td>
+                               
+                               
                                 <td>{{ $don->destination }}</td>
                                 <td>{{ $don->nature  }}</td>
                                 <td>{{ $don->donateur  }}</td>
-                                <td>{{ $don->type  }}</td>
+                              
                                 <td>{{ $don->date  }}</td>
-                                <td>{{ $don->montant  }}</td>
+                                <td>{{ $don->montant }}</td>
                                
                                 
                             </tr>

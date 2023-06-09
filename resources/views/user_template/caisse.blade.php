@@ -18,7 +18,7 @@
               <div class="form-group">
                 <label  style="color:#FF0000";>*  </label>
                 <label>N CIN </label>
-                <input type="number"  class="form-control"   name ="cin" placeholder="N CIN " >
+                <input type="number"  class="form-control"  value="{{ old('cin') }}" min="0"  name ="cin" placeholder="N CIN " >
                 @if($errors->any('cin'))
                     <span class="text-danger"> {{$errors->first('cin')}} </span>
                 @endif
@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label  style="color:#FF0000";>*  </label>
                 <label>Nom  du projet</label>
-                <input type="text"  class="form-control"  name ="nom" placeholder="Nom  du projet" >
+                <input type="text"  class="form-control"  name ="nom" value="{{ old('nom') }}" placeholder="Nom  du projet" >
                 @if($errors->any('nom'))
                     <span class="text-danger"> {{$errors->first('nom')}} </span>
                 @endif
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label  style="color:#FF0000";>*  </label>
                 <label>Nom  de activite </label>
-                <input type="text"  class="form-control"  name ="activite" placeholder="Nom  du projet" >
+                <input type="text"  class="form-control"  name ="activite" value="{{ old('activite') }}" placeholder="Nom  du projet" >
                 @if($errors->any('activite'))
                     <span class="text-danger"> {{$errors->first('activite')}} </span>
                 @endif
@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label  style="color:#FF0000";>*  </label>
                 <label>La Responsable d'assosiation  </label>
-                <input type="text"  class="form-control"  name ="responsable" placeholder="  la Responsable d'assosiation" >
+                <input type="text"  class="form-control"  name ="responsable" value="{{ old('responsable') }}"  placeholder="  la Responsable d'assosiation" >
                 @if($errors->any('responsable'))
                     <span class="text-danger"> {{$errors->first('responsable')}} </span>
                 @endif
@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label  style="color:#FF0000";>*  </label>
                 <label> Bénéficiaire </label>
-                <input type="text"  class="form-control"  name ="benefice" placeholder=" Bénéficiaire" >
+                <input type="text"  class="form-control"  name ="benefice" value="{{ old('benefice') }}" placeholder=" Bénéficiaire" >
                 @if($errors->any('benefice'))
                     <span class="text-danger"> {{$errors->first('benefice')}} </span>
                 @endif
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label  style="color:#FF0000";>*  </label>
                     <label>la  Date </label>
-                    <input type="date"  name="date" id="start"  value="aaaa-mm-jj" >
+                    <input type="date"  name="date" id="start" value="{{ old('date') }}" value="aaaa-mm-jj" >
                     @if($errors->any('date'))
                     <span class="text-danger"> {{$errors->first('date')}} </span>
                     @endif
@@ -70,7 +70,7 @@
             <div class="form-group">
                 <label  style="color:#FF0000";>*  </label>
                 <label> Heure de  operation de caisse </label>
-                <input type="time"  name="heure"  >
+                <input type="time"  name="heure" value="{{ old('heure') }}" >
                 @if($errors->any('heure'))
                     <span class="text-danger"> {{$errors->first('heure')}} </span>
                 @endif
@@ -78,7 +78,7 @@
             <div class="form-group">
                 <label  style="color:#FF0000";>*  </label>
                 <label>total des dépenses</label>
-                <input type="number"  class="form-control"  name ="total" placeholder="total des dépenses" >
+                <input type="number"  class="form-control" min="0" value="{{ old('total') }}" name ="total" placeholder="total des dépenses" >
                 @if($errors->any('total'))
                     <span class="text-danger"> {{$errors->first('total')}} </span>
                 @endif

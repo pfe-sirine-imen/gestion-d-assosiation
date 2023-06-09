@@ -9,7 +9,7 @@
                         <h4 Align=Center>Listes des projets</h4>
                     <div class="row g-3 align-items-center mt-2">
                         <div class="col-auto">
-                        <form action="/liste_projet" method="GET">
+                        <form action="/listeP" method="GET">
                             <input type="text"  placeholder="Rechercher un nom..."  name="search" >
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
@@ -22,7 +22,7 @@
                         @endif 
                 </div>
                     <div class="d-grid">
-                    <a href="/projet" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter Projet</a>
+                    <a href="/P" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter Projet</a>
                     </div>
 
                     <div class="card-body table-full-width table-responsive">
@@ -55,9 +55,9 @@
                                     <td>{{ $projet->etat  }}</td>
                                     <td>
                                         
-                                        <a href="/update_projet/{{$projet->id }}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>Modifier</a>
+                                        <a href="/admin/update_P/{{$projet->id }}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>Modifier</a>
                                     <form 
-                                        action="/sup_projet/{{$projet->id }}"
+                                        action="/admin/sup_P/{{$projet->id }}"
                                         method="get"
                                         class="inline-block"
                                         onsubmit="return confirm('Etre-vous sur?');">

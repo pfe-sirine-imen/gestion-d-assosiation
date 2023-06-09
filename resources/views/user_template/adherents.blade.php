@@ -27,7 +27,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label > Nom </label>
-                                                <input type="text" name ="nom"   class="form-control" placeholder="Nom"  >
+                                                <input type="text" name ="nom"  value="{{ old('nom') }}" class="form-control" placeholder="Nom"  >
                                             </div>
                                             @if($errors->any('nom'))
                                             <span class="text-danger"> {{$errors->first('nom')}} </span>
@@ -37,7 +37,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Prenom</label>
-                                                <input type="text" name ="prenom" class="form-control" placeholder="Prenom" >
+                                                <input type="text" name ="prenom"  value="{{ old('prenom') }}" class="form-control" placeholder="Prenom" >
                                             </div>
                                             @if($errors->any('prenom'))
                                             <span class="text-danger"> {{$errors->first('prenom')}} </span>
@@ -48,7 +48,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Adresse E-mail</label>
-                                                <input type="text" name ="mail" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  placeholder="Adresse E-mail" >
+                                                <input type="text" name ="mail" value="{{ old('mail') }}" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  placeholder="Adresse E-mail" >
                                             </div>
                                             @if($errors->any('mail'))
                                             <span class="text-danger"> {{$errors->first('mail')}} </span>
@@ -58,7 +58,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Mot de passe</label>
-                                                <input type="password" name ="pwd" class="form-control" pattern=".{6,}" placeholder="Mot de passe" >
+                                                <input type="password" name ="pwd" value="{{ old('pwd') }}" class="form-control" pattern=".{6,}" placeholder="Mot de passe" >
                                             </div>
                                             @if($errors->any('pwd'))
                                             <span class="text-danger"> {{$errors->first('pwd')}} </span>
@@ -69,21 +69,21 @@
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>situation</label>
                                                 <div>
-                                                        <input type="radio" id="marié" name="situation" value="marié">
+                                                        <input type="radio" id="marié" name="situation" value="marié" >
                                                         <label for="marié">marié</label>
                                                         </div>
 
                                                         <div>
-                                                        <input type="radio" id="célibataire" name="situation" value="célibataire">
+                                                        <input type="radio" id="célibataire" name="situation" value="célibataire" >
                                                         <label for="célibataire">célibataire</label>
                                                         </div>
                                                         <div>
-                                                        <input type="radio" id="divorce" name="situation" value="divorce">
+                                                        <input type="radio" id="divorce" name="situation"  value="divorce">
                                                         <label for="divorce">divorce</label>
                                                         </div>
 
                                                         <div>
-                                                        <input type="radio" id="veuf" name="situation" value="veuf">
+                                                        <input type="radio" id="veuf" name="situation"  value="veuf">
                                                         <label for="veuf">veuf</label>
                                                         </div>
                                                  </div>
@@ -97,7 +97,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Date de naissance</label>
-                                                <input type="date"  name="age" id="start"  value="aaaa-mm-jj" >
+                                                <input type="date"  name="age" id="start" value="{{ old('age') }}" value="aaaa-mm-jj" >
                                             </div>
                                             @if($errors->any('age'))
                                             <span class="text-danger"> {{$errors->first('age')}} </span>
@@ -107,7 +107,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label class="form-select form-select-lg">niveau d'étude</label>
-                                                <select class="form-select form-select-lg"  name="niveau">
+                                                <select class="form-select form-select-lg" value="{{ old('niveau') }}" name="niveau">
                                                     <option>niveau d'étude</option>
                                                     <option>- autre...</option>
                                                     <option>7éme</option>
@@ -133,7 +133,7 @@
                                     <div class="col-md-12">
                                         <label  style="color:#FF0000";>*  </label>
                                          <label  class="form-select form-select-lg">pays</label>
-                                            <select class="form-select form-select-lg"  name ="pays">
+                                            <select class="form-select form-select-lg" value="{{ old('pays') }}" name ="pays">
                                                 <option>Tunisie</option>
                                                 <option>France</option>
                                                 <option>Maroc</option>
@@ -153,7 +153,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Ville</label>
-                                                <input type="text"  name ="capital" class="form-control" placeholder="Ville" >
+                                                <input type="text"  name ="capital" value="{{ old('capital') }}" class="form-control" placeholder="Ville" >
                                             </div>
                                             @if($errors->any('capital'))
                                             <span class="text-danger"> {{$errors->first('capital')}} </span>
@@ -165,7 +165,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Code Postal</label>
-                                                <input type="text"  name ="code" class="form-control" placeholder="Code postal" >
+                                                <input type="text"  name ="code" value="{{ old('code') }}" min="0" class="form-control" placeholder="Code postal" >
                                             </div>
                                             @if($errors->any('code'))
                                             <span class="text-danger"> {{$errors->first('code')}} </span>
@@ -177,7 +177,7 @@
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Numero de téléphone</label>
                                                 
-                                                <input type="text" name ="tel"  class="form-control" placeholder="Numero de téléphone" >
+                                                <input type="text" name ="tel" value="{{ old('tel') }}" min="0"  class="form-control" placeholder="Numero de téléphone" >
                                             </div>
                                             @if($errors->any('tel'))
                                             <span class="text-danger"> {{$errors->first('tel')}} </span>
@@ -187,9 +187,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label>Photos </label>
-                                                <input type="file" name="photo"
-                                                    id="avatar" name="avatar"
-                                                    accept="image/png, image/jpeg">
+                                                <input type="file" name="photo" value="{{ old('photo') }}" accept="image/png, image/jpeg">
                                             </div>
                                             @if($errors->any('photo'))
                                             <span class="text-danger"> {{$errors->first('photo')}} </span>
@@ -199,7 +197,7 @@
                                             <div class="form-group">
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label> Une copie de la carte nationale d'identité</label>
-                                                <input type="file" name="copie"
+                                                <input type="file" name="copie" value="{{ old('copie') }}"
                                                     id="avatar" name="avatar"
                                                     accept="image/png, image/jpeg">
                                             </div>

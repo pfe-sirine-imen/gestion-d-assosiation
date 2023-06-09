@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\Adherents;
 use App\Models\Profil_user;
 use App\Models\Events;
@@ -11,6 +11,8 @@ use App\Models\Evenement;
 use App\Models\Reunion;
 use App\Models\Caisse;
 use PDF;
+
+use DB;
 use App\Http\Controllers\toArray;
 use Illuminate\Http\Request;
 
@@ -37,10 +39,10 @@ class AdherentsController extends Controller
         $profil_users->domaine_activite=$request->domaine_activite;
         $profil_users->pays=$request->pays;
         $profil_users->tel=$request->tel;
-        $profil_users->pwd=$request->pwd;
+        $profil_users->pwd=Hash::make($request->pwd);
         $profil_users->save();
         
-        return redirect('/profil')->with('status','Modifier utilisateur  succes!');
+        return redirect('/profil')->with('status','Modifier le compte de  utilisateur avec succes!');
     }
 
 
@@ -53,10 +55,12 @@ class AdherentsController extends Controller
 
     public function  listeadherents(Request $request){
         if($request->has('search')){
-            $adherent = Adherents::where('nom','LIKE','%'.$request->search.'%')->paginate(4);
+            $adherent = Adherents::where('nom','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $adherent =  Adherents::paginate(3);
+            $adherent =  DB::table('adherents')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('user_template.liste' ,compact('adherent'));
@@ -73,9 +77,9 @@ class AdherentsController extends Controller
             'nom' =>'required|string',
             'prenom'=>'required|string',
             'mail'=>'required|email',
-            'pwd'=>'required|min:6|',
+            'pwd'=>'required',
             'pays'=>'required|string',
-            'age'=>'required',
+            'age'=>'required|date',
             'tel'=>'required|max:8',
             'situation'=>'required',
             'code'=>'required',
@@ -90,7 +94,7 @@ class AdherentsController extends Controller
         $adherents->nom=$request->nom;
         $adherents->prenom=$request->prenom;
         $adherents->mail=$request->mail;
-        $adherents->pwd=$request->pwd;
+        $adherents->pwd=Hash::make($request->pwd);
         $adherents->pays=$request->pays;
         $adherents->age=$request->age;
         $adherents->tel=$request->tel;
@@ -108,7 +112,7 @@ class AdherentsController extends Controller
         }
             $adherents->save();  
             
-            return redirect('/adherents')->with('status','ajouter adherents succes!');
+            return redirect('/liste/adherents')->with('status','ajouter  un adhérent avec succes!');
  
     }
 
@@ -120,9 +124,9 @@ class AdherentsController extends Controller
             'nom' =>'required|string',
             'prenom'=>'required|string',
             'mail'=>'required|email',
-            'pwd'=>'required|min:6|',
+            'pwd'=>'required',
             'pays'=>'required|string',
-            'age'=>'required',
+            'age'=>'required|date',
             'tel'=>'required|max:8',
             'situation'=>'required',
             'code'=>'required',
@@ -137,7 +141,7 @@ class AdherentsController extends Controller
         $adherents->nom=$request->nom;
         $adherents->prenom=$request->prenom;
         $adherents->mail=$request->mail;
-        $adherents->pwd=$request->pwd;
+        $adherents->pwd=Hash::make($request->pwd);
         $adherents->pays=$request->pays;
         $adherents->age=$request->age;
         $adherents->tel=$request->tel;
@@ -173,7 +177,7 @@ class AdherentsController extends Controller
             'mail'=>'required|email',
             'pwd'=>'required',
             'pays'=>'required|string',
-            'age'=>'required',
+            'age'=>'required|date',
             'tel'=>'required|max:8',
             'situation'=>'required',
             'code'=>'required',
@@ -186,7 +190,7 @@ class AdherentsController extends Controller
         $adherents->nom=$request->nom;
         $adherents->prenom=$request->prenom;
         $adherents->mail=$request->mail;
-        $adherents->pwd=$request->pwd;
+        $adherents->pwd=Hash::make($request->pwd);
         $adherents->pays=$request->pays;
         $adherents->age=$request->age;
         $adherents->tel=$request->tel;
@@ -220,7 +224,7 @@ class AdherentsController extends Controller
                 'mail'=>'required|email',
                 'pwd'=>'required',
                 'pays'=>'required|string',
-                'age'=>'required',
+                'age'=>'required|date',
                 'tel'=>'required|max:8',
                 'situation'=>'required',
                 //'code'=>'required',
@@ -232,7 +236,7 @@ class AdherentsController extends Controller
             $adherents->nom=$request->nom;
             $adherents->prenom=$request->prenom;
             $adherents->mail=$request->mail;
-            $adherents->pwd=$request->pwd;
+            $adherents->pwd=Hash::make($request->pwd);
             $adherents->pays=$request->pays;
             $adherents->age=$request->age;
             $adherents->tel=$request->tel;
@@ -264,7 +268,7 @@ class AdherentsController extends Controller
             'titre' =>'required|string',
             'invite' =>'required',
             'mail' =>'required|email',
-            'date' =>'required',
+            'date' =>'required|date',
             'heure' =>'required',
             'place' =>'required|string',
             //'rendu' =>'required',
@@ -279,26 +283,32 @@ class AdherentsController extends Controller
        $reunion->place=$request->place;
        //$reunion->rendu=$request->rendu;
        $reunion->save();
-       return redirect('/reunion')->with('status','Ajouter le reunion avec succes!');
+       return redirect('/liste_reunion')->with('status','Ajouter le reunion avec succes!');
     }
+
     public function  liste_reunion(Request $request){
         if($request->has('search')){
-            $reunions = Reunion::where('titre','LIKE','%'.$request->search.'%')->paginate(4);
+            $reunions = Reunion::where('titre','LIKE','%'.$request->search.'%')->paginate(10);
         }else{
-            $reunions =  Reunion::paginate(4);
+            $reunions =  DB::table('reunions')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         return view ('user_template.liste_reunion' ,compact('reunions'));
     }
+
+
     public function  update_reunion($id){
         $reunions = Reunion::find($id);
         return view ('user_template.update_reunion',compact('reunions'));
     }
+
     public function  update_reunion_trat(Request $request){
         $request->validate([
             'titre' =>'required|string',
             'invite' =>'required',
             'mail' =>'required|email',
-            'date' =>'required',
+            'date' =>'required|date',
             'heure' =>'required',
             'place' =>'required|string',
             //'rendu' =>'required',
@@ -348,9 +358,9 @@ class AdherentsController extends Controller
        $request->validate([
             'titre' => 'required|string',
             'responsable' => 'required|string',
-            'date_debut' => 'required',
-            'date_fin' => 'required',
-            'objectif' => 'required',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
+            'objectif' => 'required|string',
             'lieu' => 'required|string',
        ]);
        
@@ -363,16 +373,18 @@ class AdherentsController extends Controller
         $events->lieu = $request->lieu;
         $events->save();
         
-        return redirect('/evenement')->with('status','ajouter les evenement avec   succes!');
+        return redirect('/liste_evenement')->with('status','ajouter les evenement avec   succes!');
        
     }
    
     public function liste_evenement(Request $request){
         if($request->has('search')){
-            $event = Events::where('titre','LIKE','%'.$request->search.'%')->paginate(4);
+            $event = Events::where('titre','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $event = Events::paginate(4);
+            $event = DB::table('events')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('user_template.liste_evenement',compact('event'));
@@ -388,8 +400,8 @@ class AdherentsController extends Controller
         $request->validate([
             'titre' => 'required|string',
             'responsable' => 'required|string',
-            'date_debut' => 'required',
-            'date_fin' => 'required',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
             'objectif' => 'required',
             'lieu' => 'required|string',
        ]);
@@ -420,8 +432,8 @@ class AdherentsController extends Controller
             'nom' => 'required|string',
             'objectif' => 'required|string',
             'responsable' => 'required|string',
-            'date_debut' => 'required',
-            'date_fin' => 'required',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
             'montant' => 'required',
             'etat' => 'required',
         ]);
@@ -435,19 +447,22 @@ class AdherentsController extends Controller
         $projet->etat = $request->etat;
         $projet->save();
 
-        return redirect('/projet')->with('status','Ajouter un projet avec succes!');
+        return redirect('/liste_projet')->with('status','Ajouter un projet avec succes!');
     }
 
     public function liste_projet(Request $request){
         if($request->has('search')){
-            $projets = Projet::where('nom','LIKE','%'.$request->search.'%')->paginate(4);
+            $projets = Projet::where('nom','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $projets = Projet::paginate(4);
+            $projets = DB::table('projets')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
        
         return view ('user_template.liste_projet',compact('projets'));
     }
+    
     public function update_projet($id){
         $projets = Projet::find($id);
         return view ('user_template.update_projet',compact('projets'));
@@ -457,8 +472,8 @@ class AdherentsController extends Controller
             'nom' => 'required|string',
             'objectif' => 'required|string',
             'responsable' => 'required|string',
-            'date_debut' => 'required',
-            'date_fin' => 'required',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
             'montant' => 'required',
             'etat' => 'required',
         ]);
@@ -489,8 +504,9 @@ class AdherentsController extends Controller
             'nature' => 'required|string',
             'donateur' => 'required|string',
             'type' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'montant' => 'required',
+            'bailleur_id'=>'required',
        ]);
         $don= new Don();
         $don->nom = $request->nom;
@@ -500,9 +516,10 @@ class AdherentsController extends Controller
         $don->type = $request->type;
         $don->date = $request->date;
         $don->montant = $request->montant;
+        $don->bailleur_id=$request->bailleur_id;
         $don->save();
 
-        return redirect('/dons')->with('status','Ajouter un don avec succes!');
+        return redirect('/liste_don')->with('status','Ajouter un don avec succes!');
 
     }
 
@@ -514,8 +531,9 @@ class AdherentsController extends Controller
             'nature' => 'required|string',
             'donateur' => 'required|string',
             'type' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'montant' => 'required',
+            'bailleur_id' => 'required',
        ]);
         $don= new Don();
         $don->nom = $request->nom;
@@ -525,6 +543,7 @@ class AdherentsController extends Controller
         $don->type = $request->type;
         $don->date = $request->date;
         $don->montant = $request->montant;
+        $don->bailleur_id = $request->bailleur_id;
         $don->save();
 
         return response()->json(['status' => 'ajouter un  don avec succes!'],200);
@@ -532,10 +551,12 @@ class AdherentsController extends Controller
     }
     public function liste_don(Request $request){
         if($request->has('search')){
-            $dons = Don::where('nom','LIKE','%'.$request->search.'%')->paginate(4);
+            $dons = Don::where('nom','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $dons = Don::paginate(4);
+            $dons = DB::table('dons')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('user_template.liste_don',compact('dons'));
@@ -559,7 +580,7 @@ class AdherentsController extends Controller
             'nature' => 'required|string',
             'donateur' => 'required|string',
             'type' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'montant' => 'required',
        ]);
        $don=  Don::find($request->id);
@@ -587,8 +608,9 @@ class AdherentsController extends Controller
             'nature' => 'required|string',
             'donateur' => 'required|string',
             'type' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'montant' => 'required',
+            'bailleur_id' => 'required',
        ]);
        $don=  Don::find($request->id);
         $don->nom = $request->nom;
@@ -598,6 +620,7 @@ class AdherentsController extends Controller
         $don->type = $request->type;
         $don->date = $request->date;
         $don->montant = $request->montant;
+        $don->bailleur_id = $request->bailleur_id;
         $don->update();
 
         return response()->json(['status' => 'Modifier un don avec succes!'],200);
@@ -623,11 +646,11 @@ class AdherentsController extends Controller
 
     public function ajouter_caisse(Request  $request){
         $request->validate([
-            'cin' => 'required|min:8|max:8',
+            'cin' => 'required|integer',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'benefice' => 'required|string',
             'heure' => 'required',
             //'solde' => 'required',
@@ -644,17 +667,17 @@ class AdherentsController extends Controller
        //$caisse->solde = $request->solde;
        $caisse->total = $request->total;
        $caisse->save();
-       return redirect('/caisse')->with('status','ajouter les operation des caisses  avec   succes!');
+       return redirect('/liste_caisse')->with('status','ajouter les operation des caisses  avec   succes!');
     }
     
 
     public function save2(Request  $request){
         $request->validate([
-            'cin' => 'required|min:8|max:8',
+            'cin' => 'required|integer',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'benefice' => 'required|string',
             'heure' => 'required',
             //'solde' => 'required',
@@ -676,10 +699,12 @@ class AdherentsController extends Controller
 
     public function liste_caisse(Request $request){
         if($request->has('search')){
-            $caisses = Caisse::where('cin','LIKE','%'.$request->search.'%')->paginate(4);
+            $caisses = Caisse::where('cin','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $caisses = Caisse::paginate(4);
+            $caisses = DB::table('caisses')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('user_template.liste_caisse',compact('caisses'));
@@ -698,11 +723,11 @@ class AdherentsController extends Controller
     
     public function  update_caisse_tart(Request $request){
         $request->validate([
-            'cin' => 'required|min:8|max:8|integer',
+            'cin' => 'required|integer',
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'benefice' => 'required|string',
             'heure' => 'required',
             //'solde' => 'required',
@@ -734,7 +759,7 @@ class AdherentsController extends Controller
             'nom' => 'required|string',
             'activite' => 'required|string',
             'responsable' => 'required|string',
-            'date' => 'required',
+            'date' => 'required|date',
             'benefice' => 'required|string',
             'heure' => 'required',
             //'solde' => 'required',
@@ -778,8 +803,8 @@ class AdherentsController extends Controller
         $request->validate([
              'titre' => 'required|string',
              'responsable' => 'required|string',
-             'date_debut' => 'required',
-             'date_fin' => 'required',
+             'date_debut' => 'required|date',
+             'date_fin' => 'required|date|after_or_equal:date_debut',
              'lieu' => 'required|string',
              'budget' => 'required',
              'objectif'=> 'required',
@@ -797,15 +822,17 @@ class AdherentsController extends Controller
         
          $even->save();
          
-         return redirect('/evenement_bailleur')->with('status','ajouter les evenement avec   succes!');
+         return redirect('/liste_evenement_bailleur')->with('status','ajouter les evenement avec   succes!');
         
     }
     public function liste_evenement_bailleur(Request $request){
         if($request->has('search')){
-            $evens = Evenement::where('titre','LIKE','%'.$request->search.'%')->paginate(4);
+            $evens = Evenement::where('titre','LIKE','%'.$request->search.'%')->paginate(10);
 
         }else{
-            $evens = Evenement::paginate(4);
+            $evens = DB::table('evenements')
+            ->orderBy('id','DESC')
+            ->paginate(10);
         }
         
         return view ('user_template.liste_evenement_bailleur',compact('evens'));
@@ -821,8 +848,8 @@ class AdherentsController extends Controller
         $request->validate([
             'titre' => 'required|string',
             'responsable' => 'required|string',
-            'date_debut' => 'required',
-            'date_fin' => 'required',
+            'date_debut' => 'required|date',
+            'date_fin' => 'required|date|after_or_equal:date_debut',
             'lieu' => 'required|string',
             'budget' => 'required',
             'objectif' => 'required',

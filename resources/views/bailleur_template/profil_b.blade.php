@@ -20,27 +20,6 @@
                         @csrf
                         
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label  style="color:#FF0000";>*  </label>
-                                    <label>Nom</label>
-                                    <input type="text"  name="nom" class="form-control" placeholder="Nom" >
-                                </div>
-                                @if($errors->any('nom'))
-                                <span class="text-danger"> {{$errors->first('nom')}} </span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label  style="color:#FF0000";>*  </label>
-                                    <label>Prenom</label>
-                                    <input type="text"  name="prenom" class="form-control" placeholder="Prenom" >
-                                </div>
-                                @if($errors->any('prenom'))
-                                <span class="text-danger"> {{$errors->first('prenom')}} </span>
-                                @endif
-                            </div>
-                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label  style="color:#FF0000";>*  </label>
@@ -61,27 +40,42 @@
                                 <span class="text-danger"> {{$errors->first('pwd')}} </span>
                                 @endif
                             </div>
+                            <div class="col-md-6">
+                                
+                                <div class="form-group">
+                                    
+                                    <label>Nom</label>
+                                    <input type="text"  name="nom" class="form-control" placeholder="Nom" >
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                  
+                                    <label>Prenom</label>
+                                    <input type="text"  name="prenom" class="form-control" placeholder="Prenom" >
+                                </div>
+                               
+                            </div>
+                            </div>
+                            
                            
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label  style="color:#FF0000";>*  </label>
+                                   
                                     <label>Nom de projet</label>
                                     <input type="text" name="pays" class="form-control" placeholder="Nom de projet" >
                                 </div>
-                                @if($errors->any('pays'))
-                                <span class="text-danger"> {{$errors->first('pays')}} </span>
-                                @endif
+                                
                             </div>  
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label  style="color:#FF0000";>*  </label>
+                               
                                 <label>Budget</label>
-                                <input type="number" name="denomination" class="form-control" placeholder="Budget" >
+                                <input type="number" name="denomination"  min="0" class="form-control" placeholder="Budget" >
                             </div>
-                            @if($errors->any('denomination'))
-                                <span class="text-danger"> {{$errors->first('denomination')}} </span>
-                            @endif
+                          
                         </div>
 
                         <button type="submit" class="btn btn-info btn-fill pull-right">Modifier Profil</button>

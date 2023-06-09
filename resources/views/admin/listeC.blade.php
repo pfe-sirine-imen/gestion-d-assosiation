@@ -10,7 +10,7 @@
                         <h4 Align=Center>Listes des Operations des caisses</h4>
                         <div class="row g-3 align-items-center mt-2">
                             <div class="col-auto">
-                            <form action="/liste_caisse" method="GET">
+                            <form action="/listeC" method="GET">
                                 <input type="text"  placeholder="Rechercher un cin..."  name="search" >
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
@@ -23,7 +23,7 @@
                             @endif 
                     </div>
                     <div class="d-grid">
-                    <a href="/caisse" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter un operation de caisse</a>
+                    <a href="/C" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter un operation de caisse</a>
                     </div>
                     <div class="card-body table-full-width table-responsive">
                         <table class="table table-hover table-striped">
@@ -60,9 +60,9 @@
                                    
                                     <td>
                                         
-                                        <a href="/update_caisse{{$caisse->id}}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>Modifier</a>
+                                        <a href="/admin/update_C/{{$caisse->id}}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>Modifier</a>
                                     <form 
-                                        action="/sup_caisse{{$caisse->id}}"
+                                        action="/admin/sup_C/{{$caisse->id}}"
                                         method="get"
                                         class="inline-block"
                                         onsubmit="return confirm('Etre-vous sur?');">

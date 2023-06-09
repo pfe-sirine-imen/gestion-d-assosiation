@@ -16,6 +16,7 @@ class CreateDonsTable extends Migration
         Schema::create('dons', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            
             $table->string('destination');
             $table->string('nature');
             $table->string('donateur');

@@ -17,7 +17,7 @@ class CreateProfilUsersTable extends Migration
             $table->id();
             $table->string('mail');
             $table->string('pwd');
-            $table->string('nom');
+            $table->string('nom')->unique();
             $table->string('prenom');
             $table->string('domaine_activite');
             $table->string('pays');

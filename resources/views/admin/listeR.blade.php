@@ -9,7 +9,7 @@
                         <h4 Align=Center>Listes des reunions</h4>
                         <div class="row g-3 align-items-center mt-2">
                             <div class="col-auto">
-                            <form action="/liste_reunion" method="GET">
+                            <form action="/listeD" method="GET">
                                 <input type="text"  placeholder="Rechercher un titre..."  name="search" >
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
@@ -22,7 +22,7 @@
                             @endif 
                     </div>
                     <div class="d-grid">
-                        <a href="/reunion" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter Reunion</a>
+                        <a href="/R" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-plus'></i>Ajouter Reunion</a>
                     </div>
                     <div class="d-grid">
                         <a href="{{ Route('pdf')}}" style="background-color:#7B68EE ; border-color:#7B68EE ; color:white" class="btn btn-info btn-fill pull-right"><i class="fas fa-file-edit">Télecharger PDF</i></a>
@@ -58,9 +58,9 @@
                                      <td>{{ $reunion->place  }}</td>
                                      <td>
                                          
-                                         <a href="/update_reunion/{{$reunion->id }}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>Modifier</a>
+                                         <a href="/admin/update_R/{{$reunion->id }}" style="background-color:#008000 ; border-color:#008000 ; color:white" class="btn btn-info btn-fill pull-right"><i class='fa fa-edit'></i>Modifier</a>
                                      <form 
-                                         action="/sup_reunion/{{$reunion->id }}"
+                                         action="/admin/sup_R/{{$reunion->id }}"
                                          method="get"
                                          class="inline-block"
                                          onsubmit="return confirm('Etre-vous sur?');">

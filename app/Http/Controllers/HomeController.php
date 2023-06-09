@@ -25,6 +25,27 @@ class HomeController extends Controller
 
         return view('user_template.layouts.sous_template');
     }
+
+
+    /*public function Index(){
+        $role_id=Auth::user()->role_id;
+       
+        
+        
+        if($role_id== 2)
+        {
+            return view('user_template.layouts.sous_template');
+        }
+        if($role_id== 1)
+        {
+            return view('admin.layouts.template');
+        }
+        else{
+
+            return view('bailleur_template.bailleur');
+        }
+
+    }*/
    
 }
   

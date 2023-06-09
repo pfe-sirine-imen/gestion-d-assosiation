@@ -4,33 +4,29 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Profil_user;
+use App\Models\Bailleur;
+use App\Models\Adherents;
+use App\Models\Events;
+use App\Models\Don;
+use App\Models\Caisse;
+use App\Models\Projet;
+use App\Models\Reunion;
 
 class DashboardController extends Controller
 {
     public function Index(){
-        return view('admin.dashboard');
+        $totalUser = Profil_user::count();
+        $totalBailleur = Bailleur::count();
+        $totalAdherent = Adherents::count();
+        $totalEvent = Events::count();
+        $totalDon = Don::count();
+        $totalCaisse = Caisse::count();
+        $totalProjet = Projet::count();
+        $totalReunion = Reunion::count();
+
+        return view('admin.dashboard' , compact('totalUser','totalBailleur','totalAdherent','totalEvent','totalDon','totalCaisse','totalProjet','totalReunion'));
     }
-    public function ajouteruser(Request  $request){
-        $request->validate([
-            'nom' =>'required|string',
-            'prenom'=>'required|string',
-            'mail'=>'required|email',
-            'pwd'=>'required',
-            'domaine_activite'=>'required|string',
-            'pays'=>'required|string',
-            'tel'=>'required|max:8',
-        ]);
-        $profil_users= new Profil_user();
-        $profil_users->nom=$request->nom;
-        $profil_users->prenom=$request->prenom;
-        $profil_users->mail=$request->mail;
-        $profil_users->domaine_activite=$request->domaine_activite;
-        $profil_users->pays=$request->pays;
-        $profil_users->tel=$request->tel;
-        $profil_users->pwd=$request->pwd;
-        $profil_users->save();
-        
-        return redirect('/compte_user')->with('status','Ajouter utilisateur avec  succes!');
-    }
+    
   
 }

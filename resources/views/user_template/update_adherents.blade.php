@@ -110,20 +110,21 @@
                                                 <label  style="color:#FF0000";>*  </label>
                                                 <label class="form-select form-select-lg">niveau d'étude</label>
                                                 <select class="form-select form-select-lg"  name="niveau" value="{{$adherents->niveau}}">
-                                                    <option>niveau d'étude</option>
-                                                    <option>- autre...</option>
-                                                    <option>7éme</option>
-                                                    <option>8éme</option>
-                                                    <option>9éme</option>
-                                                    <option>1ére secondaire</option>
-                                                    <option>2éme secondaire</option>
-                                                    <option>3éme secondaire</option>
-                                                    <option>baccalauréat</option>
-                                                    <option>1ére faculte</option>
-                                                    <option>2éme faculte</option>
-                                                    <option>3éme faculte</option>
-                                                    <option>+ autre...</option>
-                                                
+            
+                                                        <option>niveau d'étude</option>
+                                                        <option>- autre...</option>
+                                                        <option>7éme</option>
+                                                        <option>8éme</option>
+                                                        <option>9éme</option>
+                                                        <option>1ére secondaire</option>
+                                                        <option>2éme secondaire</option>
+                                                        <option>3éme secondaire</option>
+                                                        <option>baccalauréat</option>
+                                                        <option>1ére faculte</option>
+                                                        <option>2éme faculte</option>
+                                                        <option>3éme faculte</option>
+                                                        <option>+ autre...</option>
+                                                    </select> 
                                             </div>
                                             @if($errors->any('niveau'))
                                             <span class="text-danger"> {{$errors->first('niveau')}} </span>
